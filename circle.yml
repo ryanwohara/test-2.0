@@ -1,9 +1,11 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: lots0logs/circleci-wordpress
   - image: node:alpine
   - image: ruby:alpine
+  - image: elasticsearch:alpine
+  - image: php:alpine
+  - image: golang:alpine
 stages:
   build:
     workDir: /
