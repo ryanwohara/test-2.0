@@ -5,6 +5,7 @@ containerInfo:
   - image: ruby:alpine
   - image: elasticsearch:alpine
   - image: php:alpine
+  - image: lots0logs/circleci-wordpress
 stages:
   build:
     workDir: /
