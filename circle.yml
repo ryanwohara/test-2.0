@@ -1,8 +1,6 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: lots0logs/mariadb-alpine
-  - image: lots0logs/nginx-fpm-alpine
   - image: node:alpine
   - image: ruby:alpine
 stages:
