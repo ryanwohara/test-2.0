@@ -2,8 +2,6 @@ version: 2
 executorType: docker
 containerInfo:
   - image: lots0logs/mariadb-alpine
-    environment:
-      MYSQL_ROOT_PASSWORD: password
   - image: lots0logs/nginx-fpm-alpine
   - image: node:alpine
   - image: ruby:alpine
