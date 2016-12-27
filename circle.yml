@@ -9,5 +9,3 @@ stages:
   build:
     workDir: /
     steps:
-      - type: shell
-        command: return 0
