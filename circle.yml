@@ -5,7 +5,6 @@ containerInfo:
   - image: ruby:alpine
   - image: elasticsearch:alpine
   - image: php:alpine
-  - image: golang:alpine
 stages:
   build:
     workDir: /
