@@ -4,10 +4,7 @@ containerInfo:
 containerInfo:
   - image: lots0logs/circleci-wordpress
   - image: lots0logs/mariadb-alpine
-    environment:
-      MYSQL_ROOT_PASSWORD: password
   - image: lots0logs/nginx-fpm-alpine
-  - image: node:alpine
 stages:
   build:
     workDir: /opt
