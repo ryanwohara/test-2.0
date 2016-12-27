@@ -8,7 +8,6 @@ containerInfo:
       MYSQL_ROOT_PASSWORD: password
   - image: lots0logs/nginx-fpm-alpine
   - image: node:alpine
-  - image: ruby:alpine
 stages:
   build:
     workDir: /opt
