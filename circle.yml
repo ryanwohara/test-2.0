@@ -1,11 +1,11 @@
 version: 2
 executorType: docker
 containerInfo:
+  - image: lots0logs/circleci-wordpress
   - image: node:alpine
   - image: ruby:alpine
   - image: elasticsearch:alpine
   - image: php:alpine
-  - image: lots0logs/circleci-wordpress
   - image: lots0logs/nginx-fpm-alpine
   - image: lots0logs/mariadb-alpine
 stages:
