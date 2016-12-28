@@ -5,22 +5,17 @@ containerInfo:
     environment:
       WORDPRESS_DB_PASSWORD: password
       WORDPRESS_DB_HOST: mariadb
-      BS_PROJECT: ${CIRCLE_PROJECT_REPONAME:-ETDev}
-      BS_BUILD: "${CIRCLE_BRANCH}"
-      BS_NAME: "CCI Build No. ${CIRCLE_BUILD_NUM}${CIRCLE_PR_NUMBER:+ PR No. }${CIRCLE_PR_NUMBER}"
       PHPVER: 5.6.29
       WPCLI_URL: 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar'
       _REPO: Divi
-      REPO_DIR: ${HOME}/${_REPO}
-      _TESTS_DIR: ${REPO_DIR}/core/tests
-      TESTS_DIR: ${REPO_DIR}/tests
       WWWCONF_DIR: /etc/apache2/sites-available
       BASE_URL: 'http://elegantthemesdev.com:8080'
-      BUILDER_DIR: ${REPO_DIR}/includes/builder
-      FB_DIR: ${BUILDER_DIR}/frontend-builder
-      CHANGED_FILES_SCRIPT: ${TESTS_DIR}/_ci/scripts/get-changed-files.php
-      PHASE_SCRIPTS_DIR: ${REPO_DIR}/core/tests/_ci/actions
-      MAYBE_RUN_PHASE_SCRIPT: ${PHASE_SCRIPTS_DIR}/_maybe_run.sh
+  - image: lots0logs/mariadb-alpine
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  - image: lots0logs/nginx-fpm-alpine
+  - image: node:alpine
+  - image: ruby:alpine
 stages:
   build:
     workDir: /
