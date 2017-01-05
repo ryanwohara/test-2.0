@@ -23,4 +23,4 @@ stages:
           docker --version
           docker-compose --version
           docker run -d rabbitmq:3-management
-          curl -i -u guest:guest "http://localhost:15672/api/channels?sort=message_stats.publish_details.rate&sort_reverse=true&columns=name,message_stats.publish_details.rate,message_stats.deliver_get_details.rate"
+          sleep 10 && curl -I -XGET 'localhost:15672'
