@@ -1,22 +1,26 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: lots0logs/circleci-wordpress
-    environment:
-      WORDPRESS_DB_PASSWORD: password
-      WORDPRESS_DB_HOST: mariadb
-      PHPVER: 5.6.29
-      WPCLI_URL: 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar'
-      _REPO: Divi
-      WWWCONF_DIR: /etc/apache2/sites-available
-      BASE_URL: 'http://elegantthemesdev.com:8080'
-  - image: lots0logs/mariadb-alpine
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-  - image: lots0logs/nginx-fpm-alpine
-  - image: node:alpine
-  - image: ruby:alpine
+  - image: centos:7
 stages:
   build:
     workDir: /
     steps:
+      - type: shell
+        name: Install Docker Engine
+        command: |
+          curl -L -o /tmp/docker.tgz https://get.docker.com/builds/Linux/x86_64/docker-1.12.3.tgz
+          tar -xz -C /tmp -f /tmp/docker.tgz
+          mv /tmp/docker/docker* /usr/bin/
+
+          curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+          chmod +x /usr/bin/docker-compose
+
+      - type: setup-docker-engine
+      - type: shell
+        name: "Verify Docker is functional"
+        command: |
+          docker --version
+          docker-compose --version
+          docker run -d rabbitmq:3-management
+          curl -i -u guest:guest "http://localhost:15672/api/channels?sort=message_stats.publish_details.rate&sort_reverse=true&columns=name,message_stats.publish_details.rate,message_stats.deliver_get_details.rate"
