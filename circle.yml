@@ -22,5 +22,5 @@ stages:
         command: |
           docker --version
           docker-compose --version
-          docker run -d rabbitmq:3-management
-          sleep 10 && curl -I -XGET 'localhost:15672'
+          docker run -d -p 15672:15672 rabbitmq:3-management
+          sleep 5 && curl -I -XGET 'localhost:15672'
