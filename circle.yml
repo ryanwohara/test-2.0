@@ -9,6 +9,5 @@ stages:
       - type: shell
         shell: /bin/sh
         command: |
-          touch file
+          touch file && \
           setfacl -m u:root:r file
-          return 0
