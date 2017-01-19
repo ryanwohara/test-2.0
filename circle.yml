@@ -5,9 +5,8 @@ containerInfo:
   - image: ruby:alpine
 stages:
   build:
-    workDir: /home/circleci/project
+    workDir: /
     steps:
-      - type: checkout
       - type: shell
         command: |
           touch file
