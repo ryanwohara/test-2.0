@@ -7,6 +7,7 @@ stages:
   build:
     workDir: /home/circleci/project
     steps:
+      - type: checkout
       - type: shell
         command: |
           touch file
