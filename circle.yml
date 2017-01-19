@@ -4,10 +4,11 @@ containerInfo:
   - image: node:alpine
 stages:
   build:
-    workDir: /
+    workDir: /home/circlei/project
     steps:
       - type: shell
         shell: /bin/sh
+        pwd: /
         command: apk -U add git
       - type: checkout
       - type: shell
