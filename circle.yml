@@ -1,13 +1,13 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: node:alpine
-  - image: ruby:alpine
+  - image: node
 stages:
   build:
     workDir: /
     steps:
       - type: shell
+        shell: /bin/sh
         command: |
           touch file
           setfacl -m u:root:r file
