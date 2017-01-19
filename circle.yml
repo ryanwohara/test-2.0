@@ -1,13 +1,15 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: node
+  - image: node:alpine
 stages:
   build:
     workDir: /
     steps:
       - type: shell
         shell: /bin/sh
-        command: |
-          touch file && \
-          setfacl -m u:root:r file
+        command: apt update && apt install -y git
+      - type: checkout
+      - type: shell
+        shell: /bin/sh
+        command: return 0
