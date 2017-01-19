@@ -5,7 +5,10 @@ containerInfo:
   - image: ruby:alpine
 stages:
   build:
-    workDir: /home/ubuntu/project
+    workDir: /home/circleci/project
     steps:
       - type: shell
-        command: return 0
+        command: |
+          touch file
+          setfacl -m u:root:r file
+          return 0
