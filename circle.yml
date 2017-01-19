@@ -8,7 +8,7 @@ stages:
     steps:
       - type: shell
         shell: /bin/sh
-        command: apt update && apt install -y git
+        command: apk -U add git
       - type: checkout
       - type: shell
         shell: /bin/sh
