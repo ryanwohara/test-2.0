@@ -2,6 +2,10 @@ version: 2
 executorType: docker
 containerInfo:
   - image: node:alpine
+  - image: rohara/postgres:0.1
+    env:
+      - POSTGRES_USER=ubuntu
+      - POSTGRES_DB=circle_ruby_test
 stages:
   build:
     workDir: /home/circleci/project
@@ -9,8 +13,8 @@ stages:
       - type: shell
         shell: /bin/sh
         pwd: /
-        command: apk -U add git openssh
+        command: apk -U add git openssh curl
       - type: checkout
       - type: shell
         shell: /bin/sh
-        command: return 0
+        command: curl 127.0.0.1:5432
