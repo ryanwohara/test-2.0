@@ -22,3 +22,6 @@ stages:
       - type: shell
         shell: /bin/sh
         command: sleep 15 ; netstat -plntu ; curl 127.0.0.1:5432
+      - type: shell
+        shell: /bin/sh
+        command: sleep 35 ; curl 127.0.0.1:5432
