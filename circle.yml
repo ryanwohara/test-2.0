@@ -1,10 +1,5 @@
 version: 2
 executorType: machine
-containerInfo:
-  - image: rohara/postgres:0.1
-    env:
-      - POSTGRES_USER=ubuntu
-      - POSTGRES_DB=circle_ruby_test
 stages:
   build:
     workDir: /home/circleci/project
@@ -13,7 +8,7 @@ stages:
       - type: shell
         shell: /bin/sh
         name: Stop Postgres
-        command: sudo service postgres stop ; sudo netstat -plntu
+        command: sudo service postgresql stop ; sudo netstat -plntu
       - type: shell
         shell: /bin/sh
         name: Docker
