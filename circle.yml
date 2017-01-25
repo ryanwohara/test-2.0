@@ -12,9 +12,13 @@ stages:
       - type: checkout
       - type: shell
         shell: /bin/sh
+        name: Stop Postgres
+        command: service postgres stop ; netstat -plntu
+      - type: shell
+        shell: /bin/sh
         name: Docker
         command: docker run --name postgres -p 5432:5432 -e POSTGRES_USER=ubuntu -e POSETGRES_DB=circle_ruby_test rohara/postgres:0.1
         background: true
       - type: shell
         name: Debug
-        command: sleep 35 ; curl 127.0.0.1:5432 ; docker logs postgres
+        command: sleep 35 ; curl 127.0.0.1:5432 ; netstat -plntu ; docker logs postgres
