@@ -11,9 +11,10 @@ stages:
         command: sudo service postgresql stop ; sudo netstat -plntu
       - type: shell
         shell: /bin/sh
-        name: Docker
-        command: docker run --name postgres -p 5432:5432 -e POSTGRES_USER=ubuntu -e POSETGRES_DB=circle_ruby_test rohara/postgres:0.1
-        background: true
-      - type: shell
-        name: Debug
-        command: sleep 35 ; curl 127.0.0.1:5432 ; sudo netstat -plntu ; docker logs postgres
+        name: Docker Debug
+        command: |
+          docker run -d --name postgres -p 5432:5432 -e POSTGRES_USER=ubuntu -e POSETGRES_DB=circle_ruby_test rohara/postgres:0.1
+          sleep 35 
+          curl 127.0.0.1:5432 
+          sudo netstat -plntu
+          docker logs postgres
