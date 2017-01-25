@@ -17,4 +17,4 @@ stages:
       - type: checkout
       - type: shell
         shell: /bin/sh
-        command: curl 127.0.0.1:5432
+        command: sleep 15 ; curl 127.0.0.1:5432
