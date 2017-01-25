@@ -13,7 +13,7 @@ stages:
       - type: shell
         shell: /bin/sh
         name: Stop Postgres
-        command: service postgres stop ; netstat -plntu
+        command: sudo service postgres stop ; sudo netstat -plntu
       - type: shell
         shell: /bin/sh
         name: Docker
@@ -21,4 +21,4 @@ stages:
         background: true
       - type: shell
         name: Debug
-        command: sleep 35 ; curl 127.0.0.1:5432 ; netstat -plntu ; docker logs postgres
+        command: sleep 35 ; curl 127.0.0.1:5432 ; sudo netstat -plntu ; docker logs postgres
