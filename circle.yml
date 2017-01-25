@@ -22,7 +22,8 @@ stages:
         shell: /bin/sh
         name: Try again
         command: |
-          docker run -d -p 5432:5432 -e POSTGRES_USER=ubuntu -e POSETGRES_DB=circle_ruby_test rohara/postgres:0.3 postgres
           sleep 35
+          curl 127.0.0.1:5432
+          sudo netstat -plntu
           docker logs postgres
           docker ps -a
