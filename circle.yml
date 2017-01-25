@@ -6,6 +6,10 @@ containerInfo:
     env:
       - POSTGRES_USER=ubuntu
       - POSTGRES_DB=circle_ruby_test
+  - image: postgres:9.5
+    env:
+      - POSTGRES_USER=ubuntu
+      - POSTGRES_DB=circle_ruby_test
 stages:
   build:
     workDir: /home/circleci/project
