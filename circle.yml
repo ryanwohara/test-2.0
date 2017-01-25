@@ -21,4 +21,4 @@ stages:
       - type: checkout
       - type: shell
         shell: /bin/sh
-        command: sleep 15 ; ss -plntu ; curl 127.0.0.1:5432
+        command: sleep 15 ; netstat -plntu ; curl 127.0.0.1:5432
