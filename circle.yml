@@ -1,7 +1,6 @@
 version: 2
-executorType: docker
+executorType: machine
 containerInfo:
-  - image: node:alpine
   - image: rohara/postgres:0.1
     env:
       - POSTGRES_USER=ubuntu
@@ -10,14 +9,12 @@ stages:
   build:
     workDir: /home/circleci/project
     steps:
-      - type: shell
-        shell: /bin/sh
-        pwd: /
-        command: apk -U add git openssh curl
       - type: checkout
       - type: shell
         shell: /bin/sh
-        command: sleep 35 ; curl 127.0.0.1:5432 ; exit 0
+        name: Docker
+        command: docker run --name postgres -p 5432:5432 -e POSTGRES_USER=ubuntu -e POSETGRES_DB=circle_ruby_test rohara/postgres:0.1
+        background: true
       - type: shell
-        shell: /bin/sh
-        command: sleep 35 ; netstat -plntu ; curl 127.0.0.1:5432
+        name: Debug
+        command: sleep 35 ; curl 127.0.0.1:5432 ; docker logs postgres
