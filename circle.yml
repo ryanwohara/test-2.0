@@ -10,6 +10,6 @@ stages:
         shell: /bin/sh
         pwd: /
         command: |
-          ls -laR /data
+          ls -laR /
           netstat -plantu || ss -plntu
           ps auxfww
