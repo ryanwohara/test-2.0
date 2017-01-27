@@ -2,8 +2,6 @@ version: 2
 executorType: docker
 containerInfo:
   - image: trenpixster/elixir:1.4.0
-  - image: mongo:2.6.8
-    cmd: ["mongod", "--smallfiles"]
 stages:
   build:
     workDir: /home/circleci/project
