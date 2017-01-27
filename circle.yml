@@ -9,4 +9,7 @@ stages:
       - type: shell
         shell: /bin/sh
         pwd: /
-        command: mongod --smallfiles
+        command: |
+          ls -laR /data
+          mongod
+          mongod --smallfiles
