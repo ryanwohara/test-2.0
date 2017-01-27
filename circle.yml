@@ -1,6 +1,7 @@
 version: 2
 executorType: docker
 containerInfo:
+  - image: trenpixster/elixir:1.4.0
   - image: mongo:2.6.8
 stages:
   build:
@@ -11,5 +12,3 @@ stages:
         pwd: /
         command: |
           ls -laR /data
-          mongod
-          mongod --smallfiles
