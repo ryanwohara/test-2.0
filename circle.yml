@@ -9,7 +9,7 @@ containerInfo:
 
 stages:
   build:
-    workDir: /home/circleci/monoprodo
+    workDir: ~/monoprodo
     steps:
       - type: checkout
 
@@ -36,6 +36,8 @@ stages:
       - type: shell
         name: 'Install dependencies'
         command: npm install -q
+        environment:
+          NPM_CONFIG_UNSAFE_PERM: true
 
       - type: cache-save
         key: root-{{ checksum "package.json" }}
@@ -47,3 +49,7 @@ stages:
       - type: shell
         name: 'Run tests'
         command: npm test
+        environment:
+          TERM: dumb
+          ELASTICSEARCH_HOST: localhost
+          - ELASTICSEARCH_PORT: 9200
