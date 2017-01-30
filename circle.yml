@@ -52,4 +52,4 @@ stages:
         environment:
           TERM: dumb
           ELASTICSEARCH_HOST: localhost
-          - ELASTICSEARCH_PORT: 9200
+          ELASTICSEARCH_PORT: 9200
