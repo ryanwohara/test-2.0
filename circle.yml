@@ -9,7 +9,7 @@ containerInfo:
 
 stages:
   build:
-    workDir: ~/monoprodo
+    workDir: /home/circleci/monoprodo
     steps:
       - type: checkout
 
