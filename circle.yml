@@ -28,10 +28,10 @@ stages:
           git submodule update --init --recursive
 
       - type: cache-restore
-        key: root-{{ checksum "package.json" }}
+        key: 'root-{{ checksum "package.json" }}'
 
       - type: cache-restore
-        key: libs-utils-{{ checksum "libs/utils/package.json" }}
+        key: 'libs-utils-{{ checksum "libs/utils/package.json" }}'
 
       - type: shell
         name: 'Install dependencies'
@@ -40,10 +40,10 @@ stages:
           NPM_CONFIG_UNSAFE_PERM: true
 
       - type: cache-save
-        key: root-{{ checksum "package.json" }}
+        key: 'root-{{ checksum "package.json" }}'
         paths: ['node_modules']
       - type: cache-save
-        key: libs-utils-{{ checksum "libs/utils/package.json" }}
+        key: 'libs-utils-{{ checksum "libs/utils/package.json" }}'
         paths: ['libs/utils/node_modules']
 
       - type: shell
