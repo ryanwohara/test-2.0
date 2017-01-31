@@ -6,6 +6,7 @@ stages:
   build:
     workDir: /
     steps:
+      - type: checkout
       - type: shell
         command: apt update && apt install -y sudo
       - type: shell
@@ -17,3 +18,4 @@ stages:
         command: echo $TERM
       - type: shell
         command: chmod +x echo && ./echo
+
