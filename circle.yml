@@ -4,7 +4,7 @@ containerInfo:
   - image: node
 stages:
   build:
-    workDir: /
+    workDir: /home/circleci/project
     steps:
       - type: checkout
       - type: shell
