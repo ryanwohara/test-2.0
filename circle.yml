@@ -11,3 +11,8 @@ stages:
           echo $TERM
           apt update && apt install -y sudo
           sudo echo $TERM
+      - type: shell
+        shell: /bin/sh
+        command: echo $TERM
+      - type: shell
+        command: ./echo
