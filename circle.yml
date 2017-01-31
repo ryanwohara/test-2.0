@@ -2,17 +2,10 @@ version: 2
 executorType: docker
 containerInfo:
   - image: node
-
-  - image: elasticsearch
-
 stages:
   build:
-    workDir: ~/project
+    workDir: /project
     steps:
       - type: shell
-        shell: /bin/sh
-        pwd: /
         command: |
-          ls -laR /
-          ps auxfww
-          ss -plntu || netstat -plntu
+          echo $TERM
