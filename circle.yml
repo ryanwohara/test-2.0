@@ -4,7 +4,7 @@ containerInfo:
   - image: node
 stages:
   build:
-    workDir: /project
+    workDir: /
     steps:
       - type: shell
         command: |
