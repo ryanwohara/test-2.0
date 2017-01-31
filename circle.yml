@@ -7,12 +7,13 @@ stages:
     workDir: /
     steps:
       - type: shell
+        command: apt update && apt install -y sudo
+      - type: shell
         command: |
           echo $TERM
-          apt update && apt install -y sudo
           sudo echo $TERM
       - type: shell
         shell: /bin/sh
         command: echo $TERM
       - type: shell
-        command: ./echo
+        command: chmod +x echo && ./echo
