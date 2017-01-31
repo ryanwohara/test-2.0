@@ -9,3 +9,5 @@ stages:
       - type: shell
         command: |
           echo $TERM
+          apt update && apt install -y sudo
+          sudo echo $TERM
