@@ -12,6 +12,7 @@ stages:
       - PACKAGE_PATH: "bitbucket.org/ubeedev/ubiquitous_applications_server"
     steps:
     - type: shell
+      shell: /bin/sh
       pwd: /
       command: |
         apk add --update git openssh bash make curl ca-certificates wget groff less python py-pip gettext tree
