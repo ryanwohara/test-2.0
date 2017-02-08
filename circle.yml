@@ -1,55 +1,19 @@
 version: 2
-
 executorType: docker
-
 containerInfo:
-  - image: node
-
-  - image: elasticsearch
-
+  - image: golang:1.7.5-alpine
+    cmd: ["/bin/sh"]
+  - image: memcached:1.4-alpine
+  - image: mongo:3.0
+    cmd: [mongod, --smallfiles]
 stages:
   build:
-    workDir: ~/monoprodo
+    workdir: /go/src/
+    environment:
+      - PACKAGE_PATH: "bitbucket.org/ubeedev/ubiquitous_applications_server"
     steps:
-      - type: checkout
-
-      - type: shell
-        name: 'Install system dependencies'
-        command: |
-          set -ex
-          apt-get update -qq
-          apt-get install -qy libelf1 netcat-openbsd
-
-      - type: shell
-        name: 'Check out submodules'
-        command: |
-          set -ex
-          git submodule sync --recursive
-          git submodule update --init --recursive
-
-      - type: cache-restore
-        key: 'root-{{ checksum "package.json" }}'
-
-      - type: cache-restore
-        key: 'libs-utils-{{ checksum "libs/utils/package.json" }}'
-
-      - type: shell
-        name: 'Install dependencies'
-        command: npm install -q
-        environment:
-          NPM_CONFIG_UNSAFE_PERM: true
-
-      - type: cache-save
-        key: 'root-{{ checksum "package.json" }}'
-        paths: ['node_modules']
-      - type: cache-save
-        key: 'libs-utils-{{ checksum "libs/utils/package.json" }}'
-        paths: ['libs/utils/node_modules']
-
-      - type: shell
-        name: 'Run tests'
-        command: npm test
-        environment:
-          TERM: dumb
-          ELASTICSEARCH_HOST: localhost
-          ELASTICSEARCH_PORT: 9200
+    - type: shell
+      command: |
+        apk add --update git openssh bash make curl ca-certificates wget groff less python py-pip gettext tree
+        update-ca-certificates
+        pip install awscli
