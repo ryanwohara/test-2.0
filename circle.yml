@@ -1,20 +1,17 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: golang:1.7.5-alpine
-  - image: memcached:1.4-alpine
-  - image: mongo:3.0
-    cmd: ["mongod", "--smallfiles"]
+  - image: ubuntu:14.04
 stages:
-  build:
-    workdir: /go/src/
-    environment:
-      - PACKAGE_PATH: "bitbucket.org/ubeedev/ubiquitous_applications_server"
+  delegate:
+    workdir: /
     steps:
     - type: shell
-      shell: /bin/sh
-      pwd: /
       command: |
-        apk add --update git openssh bash make curl ca-certificates wget groff less python py-pip gettext tree
-        update-ca-certificates
-        pip install awscli
+        echo "delegate"
+  build:
+    workdir: /
+    steps:
+    - type: shell
+      command: |
+        echo "build"
