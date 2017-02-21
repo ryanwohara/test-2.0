@@ -19,4 +19,4 @@ stages:
         command: |
           set -e
           mvn --help
-          mvn -s settings.xml -U clean integration-test
+          #mvn -s settings.xml -U clean integration-test
