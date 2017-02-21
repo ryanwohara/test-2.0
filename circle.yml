@@ -9,7 +9,7 @@ stages:
   build:
     workDir: /project
     steps:
+      - type: checkout
       - type: shell
-        pwd: /
         command: |
-          ps auxfww
+          ls -la
