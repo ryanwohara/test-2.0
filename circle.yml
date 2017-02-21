@@ -3,8 +3,7 @@ executorType: docker
 containerInfo:
   - image: maven
     env:
-      - _JAVA_OPTIONS="-Xms512m -Xmx1024m"
-      - GRADLE_OPTS='-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+      - MAVEN_OPTS="-Xms512m -Xmx1024m"
 stages:
   build:
     workDir: /project
