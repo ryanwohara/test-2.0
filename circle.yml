@@ -11,7 +11,4 @@ stages:
       - type: shell
         pwd: /
         command: |
-          df -h
-          df -i
-          free -m
-          cat /proc/cpuinfo
+          ps auxfww
