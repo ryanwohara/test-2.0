@@ -1,10 +1,5 @@
 version: 2
-executorType: docker
-containerInfo:
-  - image: maven:3.3.9-jdk-8
-    cmd: ["/bin/bash"]
-    env:
-      - MAVEN_OPTS="-Xms512m -Xmx1024m"
+executorType: machine
 stages:
   build:
     workDir: /project
