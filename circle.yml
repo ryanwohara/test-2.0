@@ -1,17 +1,14 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: ubuntu:14.04
+  - image: maven
 stages:
-  delegate:
-    workdir: /
-    steps:
-    - type: shell
-      command: |
-        echo "delegate"
   build:
-    workdir: /
+    workDir: /project
     steps:
-    - type: shell
-      command: |
-        echo "build"
+      - type: checkout
+      - type: shell
+        command: |
+          set -e
+          mvn --help
+          mvn -s settings.xml -U clean integration-test
