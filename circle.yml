@@ -12,6 +12,12 @@ stages:
       - type: checkout
       - type: shell
         command: |
+          df -h
+          df -i
+          free -m
+          cat /proc/cpuinfo
+      - type: shell
+        command: |
           set -e
           mvn --help
           mvn -s settings.xml -U clean integration-test
