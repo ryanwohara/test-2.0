@@ -7,7 +7,6 @@ stages:
     workdir: /project
     steps:
     - type: shell
-      shell: /bin/sh
       pwd: /
       command: |
         mtr -r google.com
