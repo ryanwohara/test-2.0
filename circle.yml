@@ -14,6 +14,7 @@ stages:
         tar -xz -C /tmp -f /tmp/docker.tgz
         mv /tmp/docker/docker* /usr/bin/
     - type: setup-docker-engine
+    - type: shell
       pwd: /
       command: |
         docker run -it ubuntu:latest "apt update && apt install -y mtr && mtr -r google.com"
