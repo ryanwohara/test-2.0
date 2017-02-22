@@ -9,9 +9,8 @@ stages:
     - type: shell
       pwd: /
       command: |
-        apt update && apt install -y mtr sudo
-        which mtr
-        chmod u+s `which mtr`
-        ls -la `which mtr`
-        mtr -r google.com
-        sudo mtr -r google.com
+        apt update && apt install -y docker
+    - type: setup-docker-engine
+      pwd: /
+      command: |
+        docker run -it ubuntu:latest "apt update && apt install -y mtr && mtr -r google.com"
