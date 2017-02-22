@@ -1,10 +1,7 @@
-version: 2
-executorType: machine
-stages:
-  build:
-    workDir: ~/project
-    steps:
-      - type: checkout
-      - type: shell
-        command: |
-          ls -la
+general:
+  branches:
+    ignore:
+      - /release\/(\d+\.?)+\.build\.\d+/
+      - /hotfix\/(\d+\.?)+\.build\.\d+/
+      - /master/
+      - /test-1.0/
