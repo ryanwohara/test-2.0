@@ -4,4 +4,4 @@ general:
       - /release\/(\d+\.?)+\.build\.\d+/
       - /hotfix\/(\d+\.?)+\.build\.\d+/
       - /master/
-      - /test-1.0/
+      - /test-(\d\.?)+/
