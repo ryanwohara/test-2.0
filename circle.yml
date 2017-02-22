@@ -1,7 +1,7 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: openjdk:8
+  - image: mschewe/docker-mtr
 stages:
   build:
     workdir: /project
@@ -9,9 +9,4 @@ stages:
     - type: shell
       pwd: /
       command: |
-        apt update && apt install -y mtr sudo
-        which mtr
-        chmod u+s `which mtr`
-        ls -la `which mtr`
         mtr -r google.com
-        sudo mtr -r google.com
