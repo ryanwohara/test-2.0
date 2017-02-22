@@ -9,5 +9,6 @@ stages:
     - type: shell
       pwd: /
       command: |
+        apt update && apt install -y mtr sudo
         mtr -r google.com
         sudo mtr -r google.com
