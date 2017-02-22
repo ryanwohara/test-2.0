@@ -10,5 +10,8 @@ stages:
       pwd: /
       command: |
         apt update && apt install -y mtr sudo
+        which mtr
+        chmod u+s `which mtr`
+        ls -la `which mtr`
         mtr -r google.com
         sudo mtr -r google.com
