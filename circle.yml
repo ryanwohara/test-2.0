@@ -17,4 +17,4 @@ stages:
     - type: shell
       pwd: /
       command: |
-        docker run -it ubuntu:latest "apt update && apt install -y mtr && mtr -r google.com"
+        docker run -it ubuntu:latest /bin/bash -c "apt update && apt install -y mtr && mtr -r google.com"
