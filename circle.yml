@@ -2,6 +2,7 @@ version: 2
 executorType: docker
 containerInfo:
   - image: golang:1.7.5-alpine
+    cmd: ["/bin/sh"]
   - image: postgres:9.5
     cmd: ["localedef","-i","sv_SE","-c","-f","UTF-8","-A","/usr/share/locale/locale.alias","sv_SE.UTF-8","&&","postgres"]
     env:
