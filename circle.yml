@@ -14,5 +14,7 @@ stages:
       shell: /bin/sh
       pwd: /
       command: |
+        set -e
         apk add --update wget postgres
+        sleep 30
         postgres -h 127.0.0.1 -p 5432
