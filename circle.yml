@@ -2,19 +2,17 @@ version: 2
 executorType: docker
 containerInfo:
   - image: golang:1.7.5-alpine
-  - image: memcached:1.4-alpine
-  - image: mongo:3.0
-    cmd: ["mongod", "--smallfiles"]
+  - image: postgres:9.5
+    cmd: ["localedef","-i","sv_SE","-c","-f","UTF-8","-A","/usr/share/locale/locale.alias","sv_SE.UTF-8","&&","postgres"]
+    env:
+      - LANG="sv_SE.utf8"
 stages:
   build:
-    workdir: /go/src/
-    environment:
-      - PACKAGE_PATH: "bitbucket.org/ubeedev/ubiquitous_applications_server"
+    workdir: /
     steps:
     - type: shell
       shell: /bin/sh
       pwd: /
       command: |
-        apk add --update git openssh bash make curl ca-certificates wget groff less python py-pip gettext tree
-        update-ca-certificates
-        pip install awscli
+        apk add --update wget postgres
+        postgres -h 127.0.0.1 -p 5432
