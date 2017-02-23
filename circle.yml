@@ -16,6 +16,6 @@ stages:
       pwd: /
       command: |
         set -e
-        apk add --update wget postgresql
+        apk add --update postgresql-client
         sleep 30
-        postgres -h 127.0.0.1 -p 5432
+        postgres -h 127.0.0.1
