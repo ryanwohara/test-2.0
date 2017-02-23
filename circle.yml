@@ -17,5 +17,5 @@ stages:
       command: |
         set -e
         apk add --update postgresql-client
-        sleep 30
+        sleep 90
         psql -h 127.0.0.1
