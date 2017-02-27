@@ -10,8 +10,8 @@ stages:
         command: |
           which python
           which python3
-      - type: shell
-        command: sudo ls -l /usr/local/bin/
-      - type: shell
-        command: sudo ls -l /usr/bin/
-         
+          python --version
+          python3 --version
+          rm /opt/circleci/.pyenv/shims/python
+          cp /opt/circleci/.pyenv/shims/python3 /opt/circleci/.pyenv/shims/python
+          python --version
