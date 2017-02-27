@@ -1,0 +1,19 @@
+version: '2'
+services:
+  test:
+    build: .
+    command: bundle exec rake db:drop db:create db:schema:load db:migrate
+    links:
+      - postgres-db
+      - redis
+      - rabbitmq
+      - puma-test
+      - hub
+      - firefox
+    volumes_from:
+      - gems
+      - codebase
+    env_file:
+      - .foodydirect.env
+    environment:
+      - RAILS_ENV=test
