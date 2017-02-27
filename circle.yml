@@ -1,20 +1,28 @@
 version: 2
-executorType: docker
-containerInfo:
-  - image: openjdk:8
+executorType: machine
 stages:
   build:
-    workdir: /project
+    workDir: ~/project
     steps:
-    - type: shell
-      pwd: /
-      command: |
-        echo "test"
-        curl -L -o /tmp/docker.tgz https://get.docker.com/builds/Linux/x86_64/docker-1.12.6.tgz
-        tar -xz -C /tmp -f /tmp/docker.tgz
-        mv /tmp/docker/docker* /usr/bin/
-    - type: setup-docker-engine
-    - type: shell
-      pwd: /
-      command: |
-        docker run -it ubuntu:latest /bin/bash -c "apt update && apt install -y mtr && mtr -r google.com"
+      - type: checkout
+      - type: shell
+        name: Verify Docker Works
+        command: |
+          docker --version
+          docker-compose --version
+      - type: shell
+        name: Setup circle
+        command:  |
+          set -e
+          mkdir -p ~/circle/artifacts
+          mkdir -p ~/circle/report/rspec
+          curl -o ~/circle/picard https://circle-downloads.s3.amazonaws.com/releases/circleci-builder/circleci-builder-beta && chmod +x ~/circle/picard
+          ~/circle/picard update
+          ~/circle/picard version
+      - type: shell
+        name: Run tests
+        command: |
+          set -e
+          echo "Splitting test based on previous timings"
+          TEST_FILES=$(~/circle/picard tests glob "spec/**/*_spec.rb" | ~/circle/picard tests split --split-by=timings --timings-type=filename)
+          echo $TEST_FILES
