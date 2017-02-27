@@ -6,12 +6,12 @@ stages:
     workDir: ~/project
     steps:
       - type: checkout
-
       - type: shell
-        name: Stop existing default services
         command: |
-          sudo service postgresql stop
-          sudo ss -plntu
- 
+          which python
+          which python3
       - type: shell
-        command: docker-compose run test
+        command: sudo ls -l /usr/local/bin/
+      - type: shell
+        command: sudo ls -l /usr/bin/
+         
