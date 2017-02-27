@@ -11,7 +11,7 @@ stages:
         name: Stop existing default services
         command: |
           sudo service postgresql stop
-          sudo service redis-server stop
+          sudo ss -plntu
  
       - type: shell
         command: docker-compose run test
