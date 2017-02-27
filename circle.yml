@@ -1,28 +1,17 @@
 version: 2
 executorType: machine
+
 stages:
   build:
     workDir: ~/project
     steps:
       - type: checkout
+
       - type: shell
-        name: Verify Docker Works
+        name: Stop existing default services
         command: |
-          docker --version
-          docker-compose --version
+          sudo service postgresql stop
+          sudo service redis stop
+ 
       - type: shell
-        name: Setup circle
-        command:  |
-          set -e
-          mkdir -p ~/circle/artifacts
-          mkdir -p ~/circle/report/rspec
-          curl -o ~/circle/picard https://circle-downloads.s3.amazonaws.com/releases/circleci-builder/circleci-builder-beta && chmod +x ~/circle/picard
-          ~/circle/picard update
-          ~/circle/picard version
-      - type: shell
-        name: Run tests
-        command: |
-          set -e
-          echo "Splitting test based on previous timings"
-          TEST_FILES=$(~/circle/picard tests glob "spec/**/*_spec.rb" | ~/circle/picard tests split --split-by=timings --timings-type=filename)
-          echo $TEST_FILES
+        command: docker-compose run test
