@@ -11,5 +11,3 @@ services:
     command: --appendonly yes
     ports:
       - '6379:6379'
-    volumes:
-      - redis_data:/data
