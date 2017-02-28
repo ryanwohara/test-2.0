@@ -6,6 +6,9 @@ stages:
   build:
     workDir: /project
     steps:
+      - type: shell
+        pwd: /
+        command: apk add --upgrade git openssh
       - type: checkout
       - type: setup-docker-engine
       - type: shell
