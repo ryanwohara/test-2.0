@@ -12,14 +12,5 @@ stages:
           which python3
           python --version
           python3 --version
-          sudo apt remove -y python2.7
-          sudo apt install -y python3
-          python --version
-          python3 --version
-          ls -l /usr/bin/
-          which python
-          echo $PATH
-      - type: shell
-        command: |
-          docker -v
-          docker-compose -v
+          /usr/bin/python --version
+          /usr/bin/python3 --version
