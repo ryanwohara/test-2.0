@@ -8,7 +8,8 @@ stages:
       - type: checkout
       - type: shell
         command: |
-          export PATH="/usr/bin:$PATH"
+          echo $PATH
+          export PATH="/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin"
           which python
           which python3
           python --version
