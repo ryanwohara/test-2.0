@@ -1,26 +1,21 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: docker/compose:1.11.2
+  - image: docker/compose
 stages:
   build:
     workDir: /project
     steps:
       - type: checkout
       - type: setup-docker-engine
-
       - type: shell
-        name: Setup blank .foodydirect.env file
         command: touch .foodydirect.env
 
       - type: shell
-        name: Install Ruby Dependencies
         command: docker-compose run test bundle install
 
       - type: shell
-        name: Setup DB (rake db:drop db:create db:schema:load db:migrate)
         command: docker-compose run test
 
       - type: shell
-        name: Run Tests
         command: docker-compose run test bundle exec rspec
