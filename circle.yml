@@ -19,3 +19,7 @@ stages:
           ls -l /usr/bin/
           which python
           echo $PATH
+      - type: shell
+        command: |
+          docker -v
+          docker-compose -v
