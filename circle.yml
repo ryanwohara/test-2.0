@@ -10,6 +10,7 @@ stages:
         command: |
           echo $PATH
           export PATH="/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin"
+          export PATH="/opt/circleci/nodejs/v6.1.0/bin:/opt/google-cloud-sdk/bin:/opt/circleci/.rvm/gems/ruby-2.3.1/bin:/opt/circleci/.rvm/gems/ruby-2.3.1@global/bin:/opt/circleci/.rvm/rubies/ruby-2.3.1/bin:/home/circleci/.go_workspace/bin:/usr/local/go/bin:/opt/circleci/nodejs/v6.1.0/bin:/usr/local/apache-maven/bin:/home/circleci/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/gradle-1.10/bin:/opt/circleci/.rvm/bin:/opt/circleci/.rvm/bin"
           which python
           which python3
           python --version
