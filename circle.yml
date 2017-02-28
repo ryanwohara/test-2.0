@@ -1,7 +1,7 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: docker/compose:1.11.2
+  - image: docker/compose:1.9.0
 stages:
   build:
     workDir: /project
