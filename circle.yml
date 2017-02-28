@@ -12,3 +12,5 @@ stages:
           sudo rm /usr/bin/python
           sudo ln -s /usr/bin/python3 /usr/bin/python
           python --version
+          pip3 install flake8
+          pip install flake8
