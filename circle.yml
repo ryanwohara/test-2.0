@@ -13,4 +13,5 @@ stages:
           python --version
           python3 --version
           sudo apt remove -y python2.7
+          sudo apt install -y python3
           python --version
