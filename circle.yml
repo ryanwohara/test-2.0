@@ -8,7 +8,7 @@ stages:
     steps:
       - type: shell
         pwd: /
-        command: apk add --upgrade git openssh
+        command: apk update && apk add --upgrade git openssh
       - type: checkout
       - type: setup-docker-engine
       - type: shell
