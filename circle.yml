@@ -11,7 +11,6 @@ stages:
           which python
           which python3
           python --version
-          /opt/circleci/.pyenv/shims/python3 --version
-          rm /opt/circleci/.pyenv/shims/python
-          cp /opt/circleci/.pyenv/shims/python3 /opt/circleci/.pyenv/shims/python
-          /opt/circleci/.pyenv/shims/python --version
+          python3 --version
+          sudo apt remove -y python2.7
+          python --version
