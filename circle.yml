@@ -14,5 +14,6 @@ stages:
           ls -ld /var/lib/nginx
           ls -laR /var/lib/nginx
           touch /var/lib/nginx/logs/error.log
+          ls -la /var/lib/nginx/logs/
       - type: shell
         command: "run.sh"
