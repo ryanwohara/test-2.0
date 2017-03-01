@@ -9,14 +9,8 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: |
-          sudo rm /usr/bin/python
-          sudo ln -s /usr/bin/python3 /usr/bin/python
+        command: sudo -u root /bin/bash -c "rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python"
       - type: shell
         command: |
-          python --version
-          ls -la /usr/bin/pip*
-      - type: shell
-        command: |
-          sudo -u root /bin/bash -c "apt update && apt search pip3 && apt install -y pip3*"
+          sudo apt install -y python3-pip
           pip3 install flake8
