@@ -12,4 +12,4 @@ test:
     - nvm use 5.1.0; node --version; npm --version
   post:
     - mkdir $CIRCLE_ARTIFACTS/build
-    - echo "moo!" > "$CIRCLE_ARTIFACTS/build/onboarding.test.js.ProjectBuildOnboardingFlow when currentStep is 2 with country selected and agreed terms matches image.0.html"
+    - echo "moo!" > "$CIRCLE_ARTIFACTS/build/TEST-%23input_form_answer_scored%3A%3Aslightly+dissatisfied+in+life+trigger.xml"
