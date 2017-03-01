@@ -1,11 +1,13 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: node:alpine
-  - image: ruby:alpine
+  - image: wonderfall/nextcloud:11.0
+      env:
+        - ADMIN_USER=admin
+        - ADMIN_PASSWORD=admin
 stages:
   build:
-    workDir: /home/ubuntu/project
+    workDir: /
     steps:
       - type: shell
-        command: return 0
+        command: "run.sh"
