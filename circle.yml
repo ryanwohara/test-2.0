@@ -7,4 +7,4 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo service redis-server stop
+        command: sudo /bin/bash -c "apt update && apt search redis && ls -l /etc/init*/redis*"
