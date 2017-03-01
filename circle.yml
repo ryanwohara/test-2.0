@@ -2,9 +2,9 @@ version: 2
 executorType: docker
 containerInfo:
   - image: wonderfall/nextcloud:11.0
-      env:
-        - ADMIN_USER=admin
-        - ADMIN_PASSWORD=admin
+    env:
+      - ADMIN_USER=admin
+      - ADMIN_PASSWORD=admin
 stages:
   build:
     workDir: /
