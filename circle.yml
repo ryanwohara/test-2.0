@@ -9,8 +9,8 @@ stages:
       - type: shell
         command: |
           set +e
-          sudo /bin/bash -c "\
+          sudo /bin/bash -c "set +e \ 
           ls -l /etc/init*/redis* && \
-          service redis start && \
           /etc/init/redis-server start && \
+          systemctl start redis-server && \
           ss -plntu"
