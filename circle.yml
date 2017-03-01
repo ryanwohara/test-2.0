@@ -7,7 +7,7 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+        command: sudo /bin/bash -c "sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf"
         background: true
       - type: shell
         command: sudo ss -plntu
