@@ -11,4 +11,5 @@ test:
     - nvm use 5.0.0; node --version; npm --version
     - nvm use 5.1.0; node --version; npm --version
   post:
-    - echo "moo!" > "$CIRCLE_ARTIFACTS/build/onboarding.test.js.ProjectBuildOnboardingFlow when currentStep is 2 with country selected and agreed terms matches image.0.html"
+    - mkdir /tmp/build
+    - echo "moo!" > "/tmp/build/onboarding.test.js.ProjectBuildOnboardingFlow when currentStep is 2 with country selected and agreed terms matches image.0.html"
