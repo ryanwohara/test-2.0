@@ -7,11 +7,7 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: |
-          set +e
-          sudo /bin/bash -c "set +e ; \ 
-          ls -l /etc/init*/redis* ; \
-          /etc/init/redis-server.conf start ; \
-          systemctl start redis-server ; \
-          cat /etc/init/redis-server.conf ; \
-          ss -plntu"
+        command: sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+        background: true
+      - type: shell
+        command: sudo ss -plntu
