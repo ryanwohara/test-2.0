@@ -10,4 +10,4 @@ stages:
         command: sudo /bin/bash -c "sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf"
         background: true
       - type: shell
-        command: sudo ss -plntu
+        command: sleep 30 ; sudo ss -plntu
