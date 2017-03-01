@@ -11,6 +11,4 @@ stages:
       - type: shell
         command: sudo -u root /bin/bash -c "rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python"
       - type: shell
-        command: |
-          sudo apt install -y python3-pip
-          pip3 install flake8
+        command: sudo /bin/bash -c "apt install -y python3-pip && pip3 install flake8"
