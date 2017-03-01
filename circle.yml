@@ -9,7 +9,7 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo /bin/bash -c "rm /usr/bin/python && /usr/bin/pip && ln -s /usr/bin/python3 /usr/bin/python"
+        command: sudo /bin/bash -c "rm /usr/bin/python /usr/bin/pip && ln -s /usr/bin/python3 /usr/bin/python"
       - type: shell
         command: sudo /bin/bash -c "apt install -y python3-pip && ls -la /usr/bin/pip* && ln -s /usr/bin/pip3 /usr/bin/pip"
       - type: shell
