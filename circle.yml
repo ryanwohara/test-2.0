@@ -7,4 +7,10 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo /bin/bash -c "apt update && apt search redis && ls -l /etc/init*/redis*"
+        command: |
+          set +e
+          sudo /bin/bash -c "\
+          ls -l /etc/init*/redis* && \
+          service redis start && \
+          /etc/init/redis-server start && \
+          ss -plntu"
