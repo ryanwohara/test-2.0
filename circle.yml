@@ -18,5 +18,5 @@ stages:
           ls -la /usr/bin/pip*
       - type: shell
         command: |
-          sudo -u root /bin/bash -c "apt update && apt install -y pip3"
+          sudo -u root /bin/bash -c "apt update && apt search pip3 && apt install -y pip3*"
           pip3 install flake8
