@@ -4,13 +4,7 @@ executorType: machine
 stages:
   build:
     workDir: ~/project
-    environment:
-      - PATH: "/opt/circleci/nodejs/v6.1.0/bin:/opt/google-cloud-sdk/bin:/opt/circleci/.rvm/gems/ruby-2.3.1/bin:/opt/circleci/.rvm/gems/ruby-2.3.1@global/bin:/opt/circleci/.rvm/rubies/ruby-2.3.1/bin:/home/circleci/.go_workspace/bin:/usr/local/go/bin:/opt/circleci/nodejs/v6.1.0/bin:/usr/local/apache-maven/bin:/home/circleci/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/gradle-1.10/bin:/opt/circleci/.rvm/bin:/opt/circleci/.rvm/bin"
     steps:
       - type: checkout
       - type: shell
-        command: sudo /bin/bash -c "rm /usr/bin/python /usr/bin/pip && ln -s /usr/bin/python3 /usr/bin/python"
-      - type: shell
-        command: sudo /bin/bash -c "apt install -y python3-pip && ls -la /usr/bin/pip* && ln -s /usr/bin/pip3 /usr/bin/pip"
-      - type: shell
-        command: sudo /bin/bash -c "pip --version && pip install flake8 pytest"
+        command: sudo service redis-server stop
