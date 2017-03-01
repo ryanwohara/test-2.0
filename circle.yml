@@ -10,4 +10,4 @@ stages:
     workDir: /
     steps:
       - type: shell
-        command: "run.sh"
+        command: "touch /var/log/nginx/error.log ; run.sh"
