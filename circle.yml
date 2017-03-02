@@ -7,7 +7,6 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo /bin/bash -c "updatedb && locate php"
-        background: true
+        command: sudo /bin/bash -c "apt-get update && apt-get install php-cli"
       - type: shell
-        command: PATH="/usr/bin:$PATH" php --version
+        command: php --version
