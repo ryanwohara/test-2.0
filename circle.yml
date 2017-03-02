@@ -7,5 +7,6 @@ stages:
     workDir: /some-dir
     steps:
       - type: shell
+        pwd: /
         name: Install Build Dependencies
         command: apk add --update openssh git make gcc libc-dev
