@@ -1,11 +1,11 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: node:alpine
-  - image: ruby:alpine
+  - image: ruby:2.4.0-alpine
 stages:
   build:
-    workDir: /home/ubuntu/project
+    workDir: /some-dir
     steps:
       - type: shell
-        command: return 0
+        name: Install Build Dependencies
+        command: apk add --update openssh git make gcc libc-dev
