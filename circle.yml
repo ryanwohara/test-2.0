@@ -7,6 +7,6 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo /bin/bash -c "apt-get update && apt-get install php-cli"
+        command: sudo /bin/bash -c "apt-get update && apt-cache search php7 && apt-get install php7-cli"
       - type: shell
         command: php --version
