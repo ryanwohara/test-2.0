@@ -7,6 +7,4 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo /bin/bash -c "apt update && apt install -y mysql-server mysql-client"
-      - type: shell
-        command: mysql --version
+        command: psql -c "CREATE USER tester WITH PASSWORD 'test_password';GRANT ALL PRIVILEGES to tester;"
