@@ -7,4 +7,4 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: psql -c "CREATE USER tester WITH PASSWORD 'test_password';GRANT ALL PRIVILEGES to tester;"
+        command: psql -c "CREATE USER tester WITH PASSWORD 'test_password';GRANT ALL ON ALL TABLES IN SCHEMA public TO tester;"
