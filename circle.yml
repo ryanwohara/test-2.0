@@ -9,10 +9,4 @@ stages:
       - type: shell
         command: sudo cat /etc/*release*
       - type: shell
-        command: sudo /bin/bash -c "apt-get update && apt-get install php5-cli"
-      - type: shell
-        command: php --version
-      - type: shell
-        command: npm --version && node --version
-      - type: shell
-        command: gem --version && bundle --version
+        command: psql --version
