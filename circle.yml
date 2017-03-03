@@ -7,6 +7,6 @@ stages:
     steps:
       - type: checkout
       - type: shell
-        command: sudo cat /etc/*release*
+        command: sudo /bin/bash -c "apt update && apt install -y mysql-server mysql-client"
       - type: shell
-        command: psql --version
+        command: mysql --version
