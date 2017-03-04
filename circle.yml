@@ -1,11 +1,12 @@
 version: 2
 executorType: docker
 containerInfo:
-  - image: node:alpine
-  - image: ruby:alpine
+  - image: ubuntu:14.04
 stages:
   build:
     workDir: /home/ubuntu/project
     steps:
       - type: shell
-        command: return 0
+        command: free -m
+      - type: shell
+        command: cat /sys/fs/cgroup/memory/memory.stat
