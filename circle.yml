@@ -4,6 +4,7 @@ containerInfo:
   - image: ubuntu:14.04
 stages:
   build:
+    parallel: 36
     workDir: /home/ubuntu/project
     steps:
       - type: shell
