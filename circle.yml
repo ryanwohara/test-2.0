@@ -1,3 +1,8 @@
+general:
+  branches:
+    ignore:
+      - ignore
+
 version: 2
 executorType: docker
 containerInfo:
