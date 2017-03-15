@@ -6,6 +6,7 @@ stages:
   build:
     workDir: /project
     steps:
+      - type: setup-docker-engine
       - type: shell
         command: |
           set +e
