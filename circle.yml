@@ -1,14 +1,40 @@
 version: 2
+
 executorType: docker
+
 containerInfo:
-  - image: docker:latest
+  - image: ubuntu:16.04
 stages:
   build:
-    workDir: /project
+    workDir: /root/zapsrc
+    environment:
+      SBT_OPTS: "-Xms512M -Xmx2048M -Xss1M -XX:+CMSClassUnloadingEnabled -Dzenv=$ZENV -DglobalTarget=true"
+      SBT_TASK_LIMIT: "4"
+      TERM: dumb
     steps:
-      - type: setup-docker-engine
+      - type: checkout
+      - type: cache-restore
+        keys:
+          - src-{{ .Branch }}
+          - src-master
       - type: shell
+        command: sbt -v "; test:compile" < /dev/null
+      - type: shell
+        command: cd sites/ && npm i && npm run test
+      - type: cache-save
+        key: zapsrc-{{ .Branch }}
+        paths:
+          - "/root/.ivy2"
+          - "/root/.sbt"
+          - "/root/.coursier"
+          - "project/target"
+          - "targets"
+      - type: shell
+        command: sbt -v test < /dev/null
+      - type: deploy
+        name: Deploy to Elastic Beanstalk
         command: |
-          set +e
-          docker login hub.devshipgo.com -u anyuser -p anypwd
-          docker --insecure-registry=hub.devshipgo.com login hub.devshipgo.com -u anyuser -p anypwd
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            EB_ENV=staging EB_INSTANCE="$STAGING_EB_INSTANCE" EB_MIN=$STAGING_EB_MIN EB_MAX=$STAGING_EB_MAX EB_ROLE="$STAGING_EB_ROLE" PRIVATE_ARN="$STAGING_PRIVATE_ARN" PROTECTED_ARN="$STAGING_PROTECTED_ARN" CERTIFICATE_ARN="$STAGING_CERTIFICATE_ARN" ./bin/monolith_update.sh
+            EB_ENV=preprod EB_INSTANCE="$PREPROD_EB_INSTANCE" EB_MIN=$PREPROD_EB_MIN EB_MAX=$PREPROD_EB_MAX EB_ROLE="$PREPROD_EB_ROLE" PRIVATE_ARN="$PREPROD_PRIVATE_ARN" PROTECTED_ARN="$PREPROD_PROTECTED_ARN" CERTIFICATE_ARN="$PREPROD_CERTIFICATE_ARN" ./bin/monolith_update.sh
+          fi
