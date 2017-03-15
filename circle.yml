@@ -1,16 +1,13 @@
-general:
-  branches:
-    ignore:
-      - ignore
-
 version: 2
 executorType: docker
 containerInfo:
-  - image: node:alpine
-  - image: ruby:alpine
+  - image: docker:latest
 stages:
   build:
-    workDir: /home/ubuntu/project
+    workDir: /project
     steps:
       - type: shell
-        command: return 0
+        command: |
+          set +e
+          docker login hub.devshipgo.com -u anyuser -p anypwd
+          docker --insecure-registry=hub.devshipgo.com login hub.devshipgo.com -u anyuser -p anypwd
