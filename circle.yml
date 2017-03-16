@@ -1,8 +1,9 @@
 version: 2
-executorType: machine
-stages:
+jobs:
   build:
-    workDir: /home/circleci/project
+    docker:
+      - image: ubuntu:14.04
+    working_directory: /project
     steps:
-      - type: shell
-        command: docker version --format '{{json .}}'
+      - setup_docker_engine:
+          reusable: true
