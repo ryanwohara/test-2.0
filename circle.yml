@@ -12,4 +12,5 @@ jobs:
           MYSQL_USER: ubuntu
           MYSQL_PASSWORD: ubuntu
     steps:
-      - run: sleep 60 && curl 127.0.0.1:3306
+      - run: apt-get update && apt-get install -y curl
+      - run: sleep 45 && curl 127.0.0.1:3306
