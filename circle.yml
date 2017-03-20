@@ -1,9 +1,15 @@
 version: 2
+
 jobs:
   build:
+    working_directory: /run/shm/tmp/
     docker:
       - image: ubuntu:14.04
-    working_directory: /project
+      - image: mariadb:10.1
+        environment:
+          MYSQL_RANDOM_ROOT_PASSWORD: yes
+          MYSQL_DATABASE: circle_test
+          MYSQL_USER: ubuntu
+          MYSQL_PASSWORD: ubuntu
     steps:
-      - setup_docker_engine:
-          reusable: true
+      - run: sleep 60 && curl 127.0.0.1:3306
