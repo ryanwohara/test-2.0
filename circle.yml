@@ -4,4 +4,4 @@ dependencies:
     
 test:
   override:
-    - sudo grep -ri "django_test_runner" /
+    - sudo grep avx2 /proc/cpuinfo
