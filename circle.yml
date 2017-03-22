@@ -4,4 +4,4 @@ dependencies:
     
 test:
   override:
-    - type django_test_runner
+    - sudo grep -ri "django_test_runner" /
