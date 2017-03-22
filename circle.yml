@@ -7,6 +7,10 @@ dependencies:
     - echo "None, for now"
     
 test:
+  pre:
+    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then emulator -avd circleci-android24 -no-window; fi:
+        background: true
+        parallel: true
   override:
     - nvm use 5.0.0; node --version; npm --version
     - nvm use 5.1.0; node --version; npm --version
