@@ -1,19 +1,7 @@
-machine:
-  node:
-    version: 5.1.0
-    
 dependencies:
   pre:
     - echo "None, for now"
     
 test:
-  pre:
-    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then emulator -avd circleci-android24 -no-window; fi:
-        background: true
-        parallel: true
   override:
-    - nvm use 5.0.0; node --version; npm --version
-    - nvm use 5.1.0; node --version; npm --version
-  post:
-    - mkdir $CIRCLE_ARTIFACTS/build
-    - echo "moo!" > "$CIRCLE_ARTIFACTS/build/TEST-%23input_form_answer_scored%3A%3Aslightly+dissatisfied+in+life+trigger.xml"
+    - type django_test_runner
