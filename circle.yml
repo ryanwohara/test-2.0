@@ -1,7 +1,11 @@
+machine:
+  python:
+    version: 2.7.9 3.4.2
+
 dependencies:
   pre:
     - echo "None, for now"
     
 test:
   override:
-    - sudo grep avx2 /proc/cpuinfo
+    - sudo grep flags /proc/cpuinfo
