@@ -1,10 +1,8 @@
 version: 2
-executorType: docker
-containerInfo:
-  - image: node:alpine
-stages:
+jobs:
   build:
-    workDir: /home/ubuntu/project
+    docker:
+      - image: drazisil/ruby-node:1.0.9
+    working_directory: /project
     steps:
-      - type: shell
-        command: grep avx2 /proc/cpuinfo
+      - checkout
