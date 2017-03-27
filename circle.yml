@@ -2,10 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:1.13
+      - image: ubuntu:14.04
+      - image: redis:2.8.19
     working_directory: /project
     steps:
-      - setup_remote_docker
       - run: |
-          echo $DOCKER_TLS_VERIFY
-          echo $DOCKER_HOST
+          apt-get update && apt-get install -y redis-cli
+          echo "CONFIG SET save ''" | redis-cli -x
