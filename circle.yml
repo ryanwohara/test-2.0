@@ -7,5 +7,5 @@ jobs:
     working_directory: /project
     steps:
       - run: |
-          apt-get update && apt-get install -y redis-cli
+          apt-get update && apt-get install -y redis-tools
           echo "CONFIG SET save ''" | redis-cli -x
