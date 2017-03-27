@@ -7,8 +7,5 @@ jobs:
     steps:
       - setup_remote_docker
       - run: |
-          set +e
-          ls -la /var/run/docker.sock
-          ss -plntu || netstat -plntu
-          find /var/run -name docker.sock
-      
+          echo $DOCKER_TLS_VERIFY
+          echo $DOCKER_HOST
