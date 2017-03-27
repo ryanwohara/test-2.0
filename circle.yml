@@ -6,4 +6,8 @@ jobs:
     working_directory: /project
     steps:
       - setup_remote_docker
-      - run: ls -la /var/run/docker.sock
+      - run: |
+          set +e
+          ls -la /var/run/docker.sock
+          ss -plntu || netstat -plntu
+      
