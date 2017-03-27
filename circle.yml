@@ -10,4 +10,5 @@ jobs:
           set +e
           ls -la /var/run/docker.sock
           ss -plntu || netstat -plntu
+          find / -name docker.sock 2>/dev/null
       
