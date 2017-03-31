@@ -2,10 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:14.04
-      - image: redis:2.8.19
-    working_directory: /project
+      - image: ruby:2.1.2
+    working_directory: ~/project
+    environment:
+      _JAVA_OPTIONS: "-Xms128m -Xmx512m"
     steps:
-      - run: |
-          apt-get update && apt-get install -y redis-tools
-          echo "CONFIG SET save ''" | redis-cli -x
+      - run:
+          command: |
+            mkdir -p ~/.ssh
+            ssh-keyscan -t rsa,dsa github.com >> ~/.ssh/known_hosts
+            cat ~/.ssh/known_hosts
+      - checkout
