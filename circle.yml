@@ -3,10 +3,8 @@ jobs:
   build:
     docker:
       - image: ruby:2.1.2
-        cmd: ["apache2"]
     working_directory: ~/project
     environment:
-      HOME: /root
       _JAVA_OPTIONS: "-Xms128m -Xmx512m"
     steps:
       - checkout
