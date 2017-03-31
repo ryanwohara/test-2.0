@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: ruby:2.1.2
+        cmd: ["apache2"]
     working_directory: ~/project
     environment:
       HOME: /root
