@@ -7,9 +7,4 @@ jobs:
     environment:
       _JAVA_OPTIONS: "-Xms128m -Xmx512m"
     steps:
-      - run:
-          command: |
-            mkdir -p ~/.ssh
-            ssh-keyscan -t rsa,dsa github.com >> ~/.ssh/known_hosts
-            cat ~/.ssh/known_hosts
       - checkout
