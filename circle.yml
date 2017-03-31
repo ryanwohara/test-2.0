@@ -8,4 +8,4 @@ dependencies:
     
 test:
   override:
-    - sudo grep flags /proc/cpuinfo
+    - echo "integrationtest-report-sequential.xml" > $CIRCLE_ARTIFACTS/integrationtest-report-sequential.xml
