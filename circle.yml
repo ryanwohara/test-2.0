@@ -5,4 +5,7 @@ jobs:
       - image: php:7.1
     working_directory: /project
     steps:
-      - run: timeout 15 php -S 127.0.0.1:80
+      - run: 
+          command: php -S 127.0.0.1:80
+          background: true
+      - run: sleep 30 && exit 0
