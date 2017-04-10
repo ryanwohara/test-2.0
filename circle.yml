@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: ubuntu:16.04
-      - image: rabbitmq:alpine
+      - image: rabbitmq:3.6.9
     working_directory: /project
     steps:
       - run: sleep 30
