@@ -2,10 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: php:7.1
+      - image: 6river/rosbuild-armhf@sha256:29b16c2e37a3e175da44ae88aae5c6cea6bb7d96e3713dd406fa07a9defdb07c
     working_directory: /project
     steps:
-      - run: 
-          command: php -S 127.0.0.1:80
-          background: true
-      - run: sleep 30 && exit 0
+      - run: exit 0
