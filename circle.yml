@@ -1,23 +1,12 @@
 version: 2
-executorType: docker
-containerInfo:
-  - image: node:alpine
-  - image: rohara/postgres:0.1
-    env:
-      - POSTGRES_USER=ubuntu
-      - POSTGRES_DB=circle_ruby_test
-stages:
+jobs:
   build:
-    workDir: /home/circleci/project
+    docker:
+      - image: circleci/ruby:2.3.3
+    working_directory: /home/circleci/project
+    environment:
+      BASH_ENV: "~/.bashrc"
     steps:
-      - type: shell
-        shell: /bin/sh
-        pwd: /
-        command: apk -U add git openssh curl
-      - type: checkout
-      - type: shell
-        shell: /bin/sh
-        command: sleep 35 ; curl 127.0.0.1:5432 ; exit 0
-      - type: shell
-        shell: /bin/sh
-        command: sleep 35 ; netstat -plntu ; curl 127.0.0.1:5432
+      - run: echo $FOO || echo "not found"
+      - run: echo 'export FOO="bar"' >> ~/.bashrc
+      - run: echo $FOO
