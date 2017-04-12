@@ -5,8 +5,8 @@ jobs:
       - image: circleci/ruby:2.3.3
     working_directory: /home/circleci/project
     environment:
-      BASH_ENV: "~/.bashrc"
+      BASH_ENV: "bashrc"
     steps:
       - run: echo $FOO || echo "not found"
-      - run: echo 'export FOO="bar"' >> ~/.bashrc
+      - run: echo 'export FOO="bar"' >> bashrc
       - run: echo $FOO
