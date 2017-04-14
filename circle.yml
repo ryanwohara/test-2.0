@@ -4,9 +4,8 @@ jobs:
     docker:
       - image: circleci/ruby:2.3.3
     working_directory: /home/circleci/project
-    environment:
-      BASH_ENV: "bashrc"
     steps:
-      - run: echo $FOO || echo "not found"
-      - run: echo 'export FOO="bar"' >> bashrc
-      - run: echo $FOO
+      - run: mkdir -p spec/one/two/{foo,bar,args,kwargs}
+      - run: touch spec/one/two/{foo,bar,args,kwargs}/{foo,bar,args,kwargs}_spec.rb
+      - run: echo $(circleci tests glob "spec/**/*_spec.rb")
+      - run: echo $(circleci tests glob "spec/**/**_spec.rb")
