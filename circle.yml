@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:16.04
-    working_directory: /project
+      - image: "ahoischen/3ds-homebrew-ci-primary:0.0.3"
+    working_directory: ~/project
     steps:
-      - run: env
+      - run: exit 0
