@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: "ahoischen/3ds-homebrew-ci-primary:0.0.3"
+      - image: rohara/pwd:0.1
     working_directory: ~/project
     steps:
       - run: exit 0
