@@ -6,6 +6,7 @@ checkout:
 machine:
   pre:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - rm -v ${CIRCLE_PROJECT_REPONAME}/.ruby-version
   ruby:
     version: ruby-2.1.5
   services:
@@ -14,14 +15,18 @@ machine:
 dependencies:
   pre:
     - .circle/ecr_config.sh
+    # log into ECR to be able to manage docker images
+    - $(aws ecr get-login --region eu-west-1)
+    # change to aws staging role
+    - $(aws --profile=staging ecr get-login --region eu-west-1)
 
   override:
     - pip install --user --upgrade docker-compose==1.8.0 boto3
-    - docker build --rm=false -t "${COMPOSE_PROJECT_NAME}_${CONTAINER_FOR_TESTS}:latest" .
+    - docker build --rm=false -t ${COMPOSE_PROJECT_NAME}_${CONTAINER_FOR_TESTS}:latest .
 
 test:
   override:
-    docker-compose run ${CONTAINER_FOR_TESTS} bundle exec rake test
+    - docker-compose run ${CONTAINER_FOR_TESTS} bundle exec rake test
 
 deployment:
   staging:
