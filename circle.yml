@@ -14,10 +14,6 @@ machine:
 dependencies:
   pre:
     - .circle/ecr_config.sh
-    # log into ECR to be able to manage docker images
-    - $(aws ecr get-login --region eu-west-1)
-    # change to aws staging role
-    - $(aws --profile=staging ecr get-login --region eu-west-1)
 
   override:
     - pip install --user --upgrade docker-compose==1.8.0 boto3
