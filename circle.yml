@@ -1,10 +1,9 @@
 version: 2
-executorType: docker
-containerInfo:
-  - image: node:alpine
-stages:
+jobs:
   build:
-    workDir: /home/ubuntu/project
+    docker:
+      - image: circleci/ruby:2.3.3
+    working_directory: /home/circleci/project
     steps:
-      - type: shell
-        command: sleep 0 && [[ -n "$CODECOV_TOKEN" ]] && bash <(curl --silent https://codecov.io/bash) -X gcov -X fix
+      - run: echo "hi"
+      - run: unknown command; echo "hi"
