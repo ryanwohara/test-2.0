@@ -6,4 +6,5 @@ jobs:
     working_directory: /project
     steps:
       - checkout
+      - run: echo $CIRCLE_PULL_REQUEST
       - run: exit 0
