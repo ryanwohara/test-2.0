@@ -6,3 +6,4 @@ jobs:
     working_directory: /project
     steps:
       - checkout
+      - run: exit 0
