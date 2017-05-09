@@ -1,42 +1,13 @@
-checkout:
-  post:
-    - git submodule sync
-    - git submodule update --init --remote
-
 machine:
-  pre:
-    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
-    - rm -v ${CIRCLE_PROJECT_REPONAME}/.ruby-version
-  ruby:
-    version: ruby-2.1.5
-  services:
-    - docker
+  environment:
+    PATH: ./bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 dependencies:
-  pre:
-    - .circle/ecr_config.sh
-    # log into ECR to be able to manage docker images
-    - $(aws ecr get-login --region eu-west-1)
-    # change to aws staging role
-    - $(aws --profile=staging ecr get-login --region eu-west-1)
-
   override:
-    - pip install --user --upgrade docker-compose==1.8.0 boto3
-    - docker build --rm=false -t ${COMPOSE_PROJECT_NAME}_${CONTAINER_FOR_TESTS}:latest .
+    - echo $PATH
 
 test:
+  pre:
+    - export PATH="./bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   override:
-    - docker-compose run ${CONTAINER_FOR_TESTS} bundle exec rake test
-
-deployment:
-  staging:
-    branch: staging
-    commands:
-      - .circle/upload-build.sh
-      - .circle/slack.sh deployment-started
-      - .circle/deploy-ecs.py || .circle/slack.sh deployment-failed
-      - .circle/slack.sh deployment-finished
-  production:
-    branch: master
-    commands:
-      - .circle/upload-build.sh && .circle/slack.sh image-pushed
+    - echo $PATH
