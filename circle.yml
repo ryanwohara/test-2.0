@@ -2,9 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: drazisil/ruby-node:1.0.9
-    working_directory: /project
+      - image: heed/android.build-server
+    working_directory: ~/project
     steps:
       - checkout
-      - run: echo $CIRCLE_PULL_REQUEST
       - run: exit 0
