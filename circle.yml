@@ -1,8 +1,7 @@
 version: 2
-executorType: machine
-stages:
+jobs:
   build:
-    workDir: /home/circleci/project
+    working_directory: ~/project
     steps:
-      - type: shell
-        command: docker version --format '{{json .}}'
+      - run: docker -v
+      - run: docker-compose -v
