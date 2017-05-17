@@ -1,13 +1,7 @@
-machine:
-  environment:
-    PATH: ./bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
 dependencies:
   override:
     - echo $PATH
 
 test:
-  pre:
-    - export PATH="./bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   override:
-    - echo $PATH
+    - mtr -rw google.com
