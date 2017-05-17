@@ -4,4 +4,4 @@ dependencies:
 
 test:
   override:
-    - mtr -rw google.com
+    - yarn
