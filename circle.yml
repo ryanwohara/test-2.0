@@ -4,5 +4,4 @@ jobs:
     machine: true
     working_directory: ~/project
     steps:
-      - run: docker -v
-      - run: docker-compose -v
+      - run: java -version
