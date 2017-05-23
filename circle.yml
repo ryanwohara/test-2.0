@@ -2,8 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: heed/android.build-server
+      - image: buildpack-deps:jessie
     working_directory: ~/project
     steps:
       - checkout
-      - run: exit 0
+      - run: echo 'export PATH="/thisisntreal:/usr/local/bin:$PATH"
+      - run: echo $PATH
