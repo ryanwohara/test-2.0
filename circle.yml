@@ -4,7 +4,17 @@ containerInfo:
   - image: node:alpine
 stages:
   build:
-    workDir: /home/ubuntu/project
+    workDir: ~/project
     steps:
-      - type: shell
-        command: sleep 0 && [[ -n "$CODECOV_TOKEN" ]] && bash <(curl --silent https://codecov.io/bash) -X gcov -X fix
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                aws configure set aws_secret_access_key "$FF_AWS_SECRET_ACCESS_KEY"
+                aws configure set aws_access_key_id     "$FF_AWS_ACCESS_KEY_ID"
+                aws configure set default.region         us-east-1
+                aws configure set default.role_arn       arn:aws:iam::582758130590:role/deployment@prod
+                aws configure set default.source_profile default
+
+                docker tag "$(docker images -q freightflow_web)" "freightflow/freightflow-web:${CIRCLE_SHA1}"
+                ./config/deploy_beanstalk.sh
+            fi
