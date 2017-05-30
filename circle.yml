@@ -1,3 +1,4 @@
+version: 2
 jobs:
   build:
     working_directory: ~/app
@@ -5,14 +6,3 @@ jobs:
       - image: quay.io/signal/regulation-circleci-build-container
     steps:
       - checkout
-      - setup_remote_docker:
-          reusable: true
-          exclusive: false
-      - run: make build
-      - run: make test
-      - run: make publish
-      - deploy:
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ENV=prod make deploy
-            fi
