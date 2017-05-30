@@ -1,20 +1,18 @@
-version: 2
-executorType: docker
-containerInfo:
-  - image: node:alpine
-stages:
+jobs:
   build:
-    workDir: ~/project
+    working_directory: ~/app
+    docker:
+      - image: quay.io/signal/regulation-circleci-build-container
     steps:
+      - checkout
+      - setup_remote_docker:
+          reusable: true
+          exclusive: false
+      - run: make build
+      - run: make test
+      - run: make publish
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                aws configure set aws_secret_access_key "$FF_AWS_SECRET_ACCESS_KEY"
-                aws configure set aws_access_key_id     "$FF_AWS_ACCESS_KEY_ID"
-                aws configure set default.region         us-east-1
-                aws configure set default.role_arn       arn:aws:iam::582758130590:role/deployment@prod
-                aws configure set default.source_profile default
-
-                docker tag "$(docker images -q freightflow_web)" "freightflow/freightflow-web:${CIRCLE_SHA1}"
-                ./config/deploy_beanstalk.sh
+              ENV=prod make deploy
             fi
