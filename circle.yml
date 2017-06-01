@@ -1,8 +1,16 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/app
+    working_directory: /home/circleci/app
     docker:
-      - image: quay.io/signal/regulation-circleci-build-container
+      - image: circleci/node:6
     steps:
       - checkout
+
+
+
+deployment:
+  fake_deploy_for_cci2:
+    tag: /.*/
+    commands:
+      - echo "make tags run in 2.0"
