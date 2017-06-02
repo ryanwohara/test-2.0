@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: bepress/build-base:v2
+      - image: rohara/foo:0.1
     working_directory: ~/project
     steps:
       - run: exit 0
