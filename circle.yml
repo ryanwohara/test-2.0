@@ -6,4 +6,4 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
-      - run: exit 0
+      - run: ls -la /dev/shm
