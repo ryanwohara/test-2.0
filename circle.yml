@@ -7,3 +7,4 @@ jobs:
     steps:
       - checkout
       - run: ls -la /dev/shm
+      - run: ls -al /dev
