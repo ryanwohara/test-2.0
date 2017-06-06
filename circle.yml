@@ -2,9 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.3.3
+      - image: node:8.0.0
     working_directory: ~/project
     steps:
       - checkout
-      - run: ls -la /dev/shm
-      - run: ls -al /dev
+      - run: npm install
