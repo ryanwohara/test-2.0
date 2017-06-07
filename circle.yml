@@ -3,6 +3,9 @@ jobs:
   build:
     working_directory: ~/app
     docker:
-      - image: quay.io/signal/regulation-circleci-build-container
+      - image: circleci/ruby:2.3.3
     steps:
-      - checkout
+      - run: exit 1
+      - deploy:
+          when: on_fail
+          command: exit 0
