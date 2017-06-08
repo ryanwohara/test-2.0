@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: rohara/foo:0.4
+      - image: ioft/i386-ubuntu
     working_directory: ~/project
     steps:
       - run: exit 0
