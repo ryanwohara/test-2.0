@@ -4,4 +4,4 @@ jobs:
     machine: true
     working_directory: ~/project
     steps:
-      - run: java -version
+      - run: cat /etc/*release*
