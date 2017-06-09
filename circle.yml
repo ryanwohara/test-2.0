@@ -1,11 +1,13 @@
+aliases:
+  - &basecontainer
+    image: circleci/ruby:2.3.3
+    environment:
+      FOO_BAR: true
 version: 2
 jobs:
   build:
     working_directory: ~/app
     docker:
-      - image: circleci/ruby:2.3.3
+      - *basecontainer
     steps:
-      - run: exit 1
-      - deploy:
-          when: on_fail
-          command: exit 0
+      - run: echo $FOO_BAR
