@@ -2,6 +2,7 @@ version: 2
 jobs:
   build:
     machine: true
+    resoure_class: large
     working_directory: ~/project
     steps:
       - run: cat /etc/*release*
