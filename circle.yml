@@ -1,17 +1,17 @@
 version: 2.0
 jobs:
   build:
-    machine:
-      enabled: true
+    machine: true
+    working_directory: ~/project
     steps:
       - type: checkout
       - echo "Hello There"
   test:
+    working_directory: ~/project
     steps:
       - run:
           name: Say Goodbye
           command: echo "Hello Goodbye"
-
 workflows:
   version: 2
   btd:
