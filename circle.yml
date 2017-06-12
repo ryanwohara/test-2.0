@@ -1,8 +1,21 @@
-version: 2
+version: 2.0
 jobs:
-  build:
-    machine: true
-    resoure_class: large
-    working_directory: ~/project
-    steps:
-      - run: cat /etc/*release*
+  - build:
+      machine:
+        enabled: true
+      steps:
+        - type: checkout
+        - echo "Hello There"
+  - test:
+      steps:
+        - type: shell
+          name: Say Goodbye
+          command: echo "Hello Goodbye"
+
+workflows:
+  version: 2.0
+  build-and-test:
+    - build
+    - test:
+        requires:
+          - build
