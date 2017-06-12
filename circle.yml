@@ -1,14 +1,14 @@
 version: 2.0
 jobs:
-  - build:
-      machine:
-        enabled: true
-      steps:
-        - type: checkout
-        - echo "Hello There"
-  - test:
-      steps:
-        - type: shell
+  build:
+    machine:
+      enabled: true
+    steps:
+      - type: checkout
+      - echo "Hello There"
+  test:
+    steps:
+      - run:
           name: Say Goodbye
           command: echo "Hello Goodbye"
 
