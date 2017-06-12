@@ -15,7 +15,7 @@ jobs:
           command: echo "Hello Goodbye"
 
 workflows:
-  version: 2.0
+  version: 2
   btd:
     jobs:
       - build
