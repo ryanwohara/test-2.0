@@ -4,8 +4,8 @@ jobs:
     machine: true
     working_directory: ~/project
     steps:
-      - type: checkout
-      - echo "Hello There"
+      - checkout
+      - run: echo "Hello There"
   test:
     machine: true
     working_directory: ~/project
@@ -14,8 +14,8 @@ jobs:
           name: Say Goodbye
           command: echo "Hello Goodbye"
 
-workflows:
-  version: 2.0
+workflow:
+  version: 2
   btd:
     - build
     - test:
