@@ -16,6 +16,9 @@ jobs:
 
 workflows:
   version: 2.0
-  pr:
-    - build
-    - test
+  btd:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
