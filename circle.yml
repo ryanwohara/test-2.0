@@ -6,4 +6,4 @@ jobs:
     working_directory: ~/project
     steps:
       - run: sudo apt-get update
-      - run: sudo do-release-upgrade 
+      - run: sudo bash -c "yes y | do-release-upgrade"
