@@ -5,4 +5,4 @@ jobs:
     resoure_class: large
     working_directory: ~/project
     steps:
-      - run: cat /etc/*release*
+      - run: exit 0
