@@ -5,6 +5,5 @@ jobs:
     resource_class: large
     working_directory: ~/project
     steps:
-      - run: sudo cat /proc/cpuinfo
-      - run: free -m
-      - run: sudo ps auxfww
+      - run: sudo apt-get update
+      - run: sudo do-release-upgrade 
