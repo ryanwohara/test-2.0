@@ -5,12 +5,6 @@ jobs:
     environment:
       PACKAGE: github.com/fuubar/endland/reservoir
 
-workflows:
-  version: 2
-  build:
-    jobs:
-      - reservoir
-
 go_package_build_template: &go_package_build
   working_directory: /root/go/src/github.com/fuubar/endland/
   docker:
@@ -19,3 +13,9 @@ go_package_build_template: &go_package_build
     - checkout
     - run: git pull origin $CIRCLE_BRANCH --depth=1000000
     - run: ./external_docker_build.sh "$PACKAGE"
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - reservoir
