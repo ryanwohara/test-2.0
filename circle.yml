@@ -1,25 +1,19 @@
-version: 2.0
+version: 2
 jobs:
-  test:
-    machine: true
-    working_directory: ~/project
-    steps:
-      - run:
-          name: Say Goodbye
-          command: echo "Hello Goodbye"
+  reservoir:
+    <<:  *go_package_build
+    environment:
+      PACKAGE: github.com/path/reservoir
 
 workflows:
   version: 2
   build:
     jobs:
-      - test
+      - reservoir
 
-
-experimental:
-  notify:
-    branches:
-      only:
-        - master
-        - /staging-.*/
-        - /fixes-.*/
-
+go_package_build_template: &go_package_build
+  working_directory: /root/go/src/github.com/reservoir
+  docker:
+    - image: buildpack-deps:jessie
+  steps:
+    - exit 0
