@@ -1,4 +1,15 @@
 version: 2
+
+go_package_build_template: &go_package_build
+  working_directory: ~/go/src/github.com/fuubar/endland/
+  docker:
+    - image: host.io/fuubar-docker-images/xenial-base:1.2
+  steps:
+    - checkout
+    - run: git pull origin $CIRCLE_BRANCH --depth=1000000
+    - run: ./external_docker_build.sh "$PACKAGE"
+
+
 jobs:
   reservoir:
     *go_package_build
@@ -10,12 +21,3 @@ workflows:
   build:
     jobs:
       - reservoir
-
-go_package_build_template: &go_package_build
-  working_directory: ~/go/src/github.com/fuubar/endland/
-  docker:
-    - image: host.io/fuubar-docker-images/xenial-base:1.2
-  steps:
-    - checkout
-    - run: git pull origin $CIRCLE_BRANCH --depth=1000000
-    - run: ./external_docker_build.sh "$PACKAGE"
