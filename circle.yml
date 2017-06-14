@@ -16,4 +16,4 @@ go_package_build_template: &go_package_build
   docker:
     - image: buildpack-deps:jessie
   steps:
-    - exit 0
+    - run: exit 0
