@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     machine: true
-    resource_class: large
     working_directory: ~/project
     steps:
       - run: sudo cat /proc/cpuinfo
