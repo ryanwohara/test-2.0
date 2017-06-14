@@ -1,7 +1,7 @@
 version: 2
 jobs:
   reservoir:
-    <<: *go_package_build
+    *go_package_build
     environment:
       PACKAGE: "github.com/fuubar/endland/reservoir"
 
