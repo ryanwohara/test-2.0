@@ -2,9 +2,8 @@ version: 2
 jobs:
   build:
     machine: true
-    resource_class: large
+    resource_class: xlarge
     working_directory: ~/project
     steps:
       - run: sudo cat /proc/cpuinfo
       - run: free -m
-      - run: sudo ps auxfww
