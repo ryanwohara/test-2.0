@@ -3,7 +3,7 @@ jobs:
   reservoir:
     <<:  *go_package_build
     environment:
-      PACKAGE: github.com/path/reservoir
+      PACKAGE: github.com/fuubar/endland/reservoir
 
 workflows:
   version: 2
@@ -12,8 +12,10 @@ workflows:
       - reservoir
 
 go_package_build_template: &go_package_build
-  working_directory: /root/go/src/github.com/reservoir
+  working_directory: /root/go/src/github.com/fuubar/endland/
   docker:
-    - image: buildpack-deps:jessie
+    - image: host.io/fuubar-docker-images/xenial-base:1.2
   steps:
-    - run: exit 0
+    - checkout
+    - run: git pull origin $CIRCLE_BRANCH --depth=1000000
+    - run: ./external_docker_build.sh "$PACKAGE"
