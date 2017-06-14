@@ -13,3 +13,13 @@ workflows:
   build:
     jobs:
       - test
+
+
+experimental:
+  notify:
+    branches:
+      only:
+        - master
+        - /staging-.*/
+        - /fixes-.*/
+
