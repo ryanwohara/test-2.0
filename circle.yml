@@ -5,4 +5,4 @@ jobs:
       - image: circleci/ruby:2.3.3
     working_directory: ~/project
     steps:
-      - run: echo $foobar
+      - deploy: echo $foobar
