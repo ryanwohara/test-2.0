@@ -5,6 +5,4 @@ jobs:
       - image: circleci/ruby:2.3.3
     working_directory: ~/project
     steps:
-      - checkout
-      - run: ls -la /dev/shm
-      - run: ls -al /dev
+      - run: echo $foobar
