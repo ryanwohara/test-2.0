@@ -6,4 +6,4 @@ jobs:
     working_directory: ~/project
     steps:
       - deploy: 
-          command: echo $foobar
+          command: echo $CIRCLE_ARTIFACTS
