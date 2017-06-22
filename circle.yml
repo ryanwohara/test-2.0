@@ -2,8 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.3.3
+      - image: circleci/python:2.7.13
     working_directory: ~/project
     steps:
-      - deploy: 
-          command: echo $CIRCLE_ARTIFACTS
+      - run: wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-160.0.0-linux-x86_64.tar.gz && tar zxvf google-cloud-sdk-160.0.0-linux-x86_64.tar.gz && rm google-cloud-sdk-160.0.0-linux-x86_64.tar.gz && cd google-cloud-sdk/ && yes y | sudo ./install.sh
