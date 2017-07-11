@@ -4,4 +4,4 @@ dependencies:
 
 test:
   override:
-    - yarn --version
+    - sudo sysctl -w fs.file-max=500000
