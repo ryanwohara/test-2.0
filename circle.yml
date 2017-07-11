@@ -4,4 +4,17 @@ dependencies:
 
 test:
   override:
-    - sudo sysctl -w fs.file-max=500000
+    - ps aux | grep [c]assandra
+    - ps aux | grep [j]ava
+
+machine:
+  pre:
+    - sudo apt-get remove cassandra
+    - sudo rm /etc/init.d/cassandra
+    - sudo rm -rf /var/lib/cassandra
+    - echo "deb http://debian.datastax.com/community stable main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+    - curl -L http://debian.datastax.com/debian/repo_key | sudo apt-key add -
+    - sudo apt-get update
+    - sudo apt-get install dsc20=2.0.17-1 cassandra=2.0.17
+    - sudo rm -rf /var/lib/cassandra/data/system/*
+    - sudo cassandra
