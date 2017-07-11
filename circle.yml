@@ -17,4 +17,5 @@ machine:
     - sudo apt-get update
     - sudo apt-get install dsc20=2.0.17-1 cassandra=2.0.17
     - sudo rm -rf /var/lib/cassandra/data/system/*
-    - sudo cassandra
+    - sudo cassandra:
+        background: true
