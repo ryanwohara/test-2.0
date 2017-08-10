@@ -1,12 +1,12 @@
 version: 2
 jobs:
   build:
-    machine: true
-    working_directory: ~/project
+    docker:
+      - image: circleci/ruby:2.3.4-node-browsers
+    resource_class: small
     steps:
       - run:
           shell: sudo bash -eo pipefail
           command: |
-            ifconfig eth0 down
-            ifconfig eth0 hw ether 00:11:22:33:44:55
-            ifconfig eth0 up
+            free -m
+            cat /proc/cpuinfo
