@@ -3,7 +3,5 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.3.3
-    working_directory: ~/project
     steps:
-      - deploy: 
-          command: echo $CIRCLE_ARTIFACTS
+      - run: pwd
