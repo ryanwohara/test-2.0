@@ -12,14 +12,9 @@ workflows:
   version: 2
   build:
     jobs:
-      - test
-
-
-experimental:
-  notify:
-    branches:
-      only:
-        - master
-        - /staging-.*/
-        - /fixes-.*/
-
+      - test:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
