@@ -1,5 +1,19 @@
 version: 2.0
 jobs:
+  nontest:
+    machine: true
+    working_directory: ~/project
+    steps:
+      - run:
+          name: Say Goodbye
+          command: echo "Hello Goodbye"
+  build:
+    machine: true
+    working_directory: ~/project
+    steps:
+      - run:
+          name: Say Goodbye
+          command: echo "Hello Goodbye"
   test:
     machine: true
     working_directory: ~/project
@@ -12,7 +26,12 @@ workflows:
   version: 2
   build:
     jobs:
+      - nontest
+      - build
       - test:
+          requires: 
+            - nontest
+            - build
           filters:
             branches:
               ignore: /.*/
