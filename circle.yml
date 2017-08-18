@@ -2,6 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ruby:2.3.3
+      - image: php:7
     steps:
       - run: if ! which git > /dev/null ; then exit 1 ; fi
