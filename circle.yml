@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.3.3
+      - image: ruby:2.3.3
     steps:
-      - run: env | grep -i aws
-      - run: ls -l ~/.aws
+      - run: if ! which git > /dev/null ; then exit 1 ; fi
