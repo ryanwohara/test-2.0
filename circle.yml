@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: php:7
+      - image: docker
     steps:
       - setup_remote_docker
       - run: docker run --privileged -d harbur/haveged:1.7c-1
