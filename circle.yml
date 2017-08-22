@@ -4,4 +4,8 @@ jobs:
     docker:
       - image: php:7
     steps:
-      - run: if ! which git > /dev/null ; then exit 1 ; fi
+      - setup_remote_docker
+      - run: docker run --privileged -d harbur/haveged:1.7c-1
+      - run: sleep 30
+      - run: docker ps -a
+
