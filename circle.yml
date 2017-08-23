@@ -2,6 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.3.3
+      - image: docker:latest
     steps:
-      - run: pwd
+      - setup_remote_docker
+      - run: docker run -d circleci/postgres:9.4-ram
+      - run: sleep 30
+      - run: docker ps -a
