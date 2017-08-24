@@ -4,8 +4,4 @@ jobs:
     docker:
       - image: docker
     steps:
-      - setup_remote_docker
-      - run: docker run --privileged -d harbur/haveged:1.7c-1
-      - run: sleep 30
-      - run: docker ps -a
-
+      - run: df -T
