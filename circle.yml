@@ -4,4 +4,6 @@ jobs:
     docker:
       - image: docker
     steps:
-      - run: df -T
+      - run: 
+          command: whoami
+          shell: bash --login -eo pipefail
