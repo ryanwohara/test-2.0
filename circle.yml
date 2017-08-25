@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.3.4
     steps:
+      - run: cat /etc/resolv.conf
       - run: sudo apt install dnsutils
       - run: 
           command: dig +trace package.elm-lang.org
