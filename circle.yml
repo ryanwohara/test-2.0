@@ -24,3 +24,7 @@ jobs:
           command: host package.elm-lang.org
           shell: bash --login -eo pipefail
           when: always
+      - run: 
+          command: dig +dnssec package.elm-lang.org
+          shell: bash --login -eo pipefail
+          when: always
