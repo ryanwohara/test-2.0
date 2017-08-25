@@ -5,5 +5,5 @@ jobs:
       - image: circleci/ruby:2.3.4
     steps:
       - run: 
-          command: curl http://package.elm-lang.org/all-packages?elm-package-version=0.18
+          command: dig +trace package.elm-lang.org
           shell: bash --login -eo pipefail
