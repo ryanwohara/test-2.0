@@ -5,5 +5,5 @@ jobs:
       - image: circleci/ruby:2.3.4
     steps:
       - run: 
-          command: whoami
+          command: curl http://package.elm-lang.org/all-packages?elm-package-version=0.18
           shell: bash --login -eo pipefail
