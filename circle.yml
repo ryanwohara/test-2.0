@@ -12,3 +12,11 @@ jobs:
       - run: 
           command: dig +trace package.elm-lang.org
           shell: bash --login -eo pipefail
+      - run: 
+          command: dig @8.8.8.8 package.elm-lang.org
+          shell: bash --login -eo pipefail
+          when: always
+      - run: 
+          command: dig @8.8.4.4 package.elm-lang.org
+          shell: bash --login -eo pipefail
+          when: always
