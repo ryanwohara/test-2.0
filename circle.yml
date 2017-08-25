@@ -20,3 +20,7 @@ jobs:
           command: dig @8.8.4.4 package.elm-lang.org
           shell: bash --login -eo pipefail
           when: always
+      - run: 
+          command: host package.elm-lang.org
+          shell: bash --login -eo pipefail
+          when: always
