@@ -4,27 +4,4 @@ jobs:
     docker:
       - image: circleci/ruby:2.3.4
     steps:
-      - run:
-         command: echo "nameserver 8.8.8.8" > /etc/resolv.conf
-         shell: sudo bash --login -eo pipefail
-      - run: cat /etc/resolv.conf
-      - run: sudo apt install dnsutils
-      - run: 
-          command: dig +trace package.elm-lang.org
-          shell: bash --login -eo pipefail
-      - run: 
-          command: dig @8.8.8.8 package.elm-lang.org
-          shell: bash --login -eo pipefail
-          when: always
-      - run: 
-          command: dig @8.8.4.4 package.elm-lang.org
-          shell: bash --login -eo pipefail
-          when: always
-      - run: 
-          command: host package.elm-lang.org
-          shell: bash --login -eo pipefail
-          when: always
-      - run: 
-          command: dig +dnssec package.elm-lang.org
-          shell: bash --login -eo pipefail
-          when: always
+      - run: cat /etc/hosts
