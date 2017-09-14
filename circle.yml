@@ -4,5 +4,6 @@ dependencies:
 
 test:
   override:
-    - git config --global -l
-    - cat ~/.gitconfig
+    - echo $FOO
+    - echo $ARGS
+    - env > $CIRCLE_ARTIFACTS/shenanigans.txt
