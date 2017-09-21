@@ -5,4 +5,4 @@ jobs:
       - image: docker
     parallelism: 3
     steps:
-      - run: sleep $((N * (1 + $CIRCLE_NODE_INDEX)))
+      - run: sleep $((30 * (1 + $CIRCLE_NODE_INDEX)))
