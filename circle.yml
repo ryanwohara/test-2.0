@@ -3,6 +3,6 @@ jobs:
   build:
     docker:
       - image: docker
-    paralellism: 3
+    parallelism: 3
     steps:
       - run: sleep 300 && echo "hey"
