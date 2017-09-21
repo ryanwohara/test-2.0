@@ -6,3 +6,4 @@ jobs:
     parallelism: 3
     steps:
       - run: sleep 300 && echo "hey"
+      - run: if [ $CIRCLE_NODE_INDEX -eq 0 ] ; then sleep 30 ; fi
