@@ -3,6 +3,6 @@ jobs:
   build:
     docker:
       - image: docker
+    paralellism: 3
     steps:
-      - setup_remote_docker
-      - run: echo $DOCKER_HOST
+      - run: sleep 300 && echo "hey"
