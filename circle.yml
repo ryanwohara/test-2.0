@@ -4,6 +4,4 @@ dependencies:
 
 test:
   override:
-    - echo $FOO
-    - echo $ARGS
-    - env > $CIRCLE_ARTIFACTS/shenanigans.txt
+    - watch -n5 free -m
