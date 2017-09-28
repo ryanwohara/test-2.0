@@ -5,4 +5,7 @@ jobs:
       - image: circleci/ruby:2.3.3-node-browsers
     steps:
       - checkout
-      - run: ls -laR ~
+      - run: mkdir artifacts
+      - run: ls -laR ~ > artifacts/foo
+      - store_artifacts:
+          path: artifacts
