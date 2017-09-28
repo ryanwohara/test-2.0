@@ -9,3 +9,23 @@ jobs:
       - run: ls -laR ~ > artifacts/foo
       - store_artifacts:
           path: artifacts
+  deploy:
+    docker:
+      - image: docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker build -t foo:0.1 .
+      - run: docker ps -a
+      - run: docker images
+
+
+workflows:
+  version: 2
+
+  btd:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
