@@ -3,4 +3,8 @@ jobs:
   build:
     machine: true
     steps:
-      - run: /opt/circleci/nodejs/v6.1.0/bin/npm --version
+      - run: |
+          source /opt/circleci/.nvm/nvm.sh
+          nvm i 3.0.0
+          npm --version
+          node --version
