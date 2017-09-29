@@ -3,6 +3,4 @@ jobs:
   build:
     machine: true
     steps:
-      - run: |
-          source ~/.bashrc
-          npm --version
+      - run: /opt/circleci/nodejs/v6.1.0/bin/npm --version
