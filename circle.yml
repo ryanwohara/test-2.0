@@ -3,5 +3,6 @@ jobs:
   build:
     machine: true
     steps:
-      - run: echo "source ~/.circlerc" >> $BASH_ENV
-      - run: npm --version
+      - run: |
+          source ~/.bashrc
+          npm --version
