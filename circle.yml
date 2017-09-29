@@ -2,11 +2,7 @@ version: 2
 jobs:
   build:
     machine: true
-    working_directory: ~/project
+    environment:
+      BASH_ENV: "/home/circleci/.bashrc"
     steps:
-      - run:
-          shell: sudo bash -eo pipefail
-          command: |
-            ifconfig eth0 down
-            ifconfig eth0 hw ether 00:11:22:33:44:55
-            ifconfig eth0 up
+      - run: npm --version
