@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     machine: true
-    environment:
-      BASH_ENV: "~/.circlerc"
     steps:
+      - run: echo "source ~/.circlerc" >> $BASH_ENV
       - run: npm --version
