@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: docker
-      - image: circleci/postgres:9.4-alpine-postgis-ram
+      - image: rohara/postgis:9.3-test
     parallelism: 1
     steps:
       - run: sleep 300
