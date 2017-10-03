@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: docker
-      - image: rohara/postgis:9.3-test
+      - image: rohara/postgis@sha256:f0a60cda575da491cc99584c39a76e3ba190dc8563bfc3e0fd18aacd7cfd2350
     parallelism: 1
     steps:
       - run: sleep 300
