@@ -3,7 +3,8 @@ jobs:
   build:
     docker:
       - image: docker
-      - image: notnoopci/postgres:9.3-postgis
+    environment:
+      foobar: nop
     parallelism: 1
     steps:
-      - run: sleep 300
+      - run: echo $foobar
