@@ -1,8 +1,8 @@
 
 checkout: &checkout
-    - checkout
+  checkout
 exit_0: &exit_0
-    - run: exit 0
+  run: exit 0
 
 version: 2
 jobs:
@@ -11,5 +11,5 @@ jobs:
       - image: docker
     parallelism: 1
     steps: 
-      <<: *checkout
-      <<: *exit_0
+      - *checkout
+      - *exit_0
