@@ -1,7 +1,8 @@
 
-steps: &reference_key
-  - checkout
-  - run: exit 0
+reference_key: &reference_key
+  steps:
+    - checkout
+    - run: exit 0
 
 version: 2
 jobs:
@@ -10,4 +11,5 @@ jobs:
       - image: docker
     parallelism: 1
     steps:
-      <<: *reference_key
+      - <<: *reference_key
+      - run: echo "ah"
