@@ -1,5 +1,5 @@
 
-reference_key: &reference_key
+steps: &reference_key
   - checkout
   - run: exit 0
 
