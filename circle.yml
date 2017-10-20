@@ -1,12 +1,15 @@
+standard_config: &standard_config
+  resource_class: xlarge
+  docker:
+    - image: docker
+  environment:
+    foobar: nop
+  parallelism: 1
+
 version: 2
 jobs:
   build:
-    docker:
-      - image: docker
-    resource_class: xlarge
-    environment:
-      foobar: nop
-    parallelism: 1
+    <<: *standard_config
     steps:
       - run: echo $foobar
       - run: sleep 30
