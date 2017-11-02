@@ -12,8 +12,7 @@ jobs:
     <<: *standard_config
     steps:
       - run: echo $foobar
-      - run: sleep 30
       - run:
-          shell: /usr/bin/env python
+          shell: /usr/bin/python
           command: |
             print("does this work?")
