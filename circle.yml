@@ -5,8 +5,9 @@ jobs:
       - image: circleci/php:7
     steps:
       - run:
-          shell: /usr/local/bin/php
           command: >
+            echo '
             <?php 
             echo "hello world" 
             ?>
+            ' | php
