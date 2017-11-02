@@ -2,9 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3
+      - image: circleci/php:7
     steps:
       - run:
-          shell: /usr/bin/env python
-          command: |
-            print("does this work?")
+          shell: /usr/local/bin/php
+          command: <
+            <?php 
+            echo "hello world" 
+            ?>
