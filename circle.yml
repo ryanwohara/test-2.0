@@ -5,6 +5,6 @@ jobs:
       - image: circleci/python:3
     steps:
       - run:
-          shell: /usr/bin/python
+          shell: /usr/bin/env python
           command: |
             print("does this work?")
