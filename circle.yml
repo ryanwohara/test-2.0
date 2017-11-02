@@ -1,17 +1,9 @@
-standard_config: &standard_config
-  resource_class: xlarge
-  docker:
-    - image: docker
-  environment:
-    foobar: nop
-  parallelism: 1
-
 version: 2
 jobs:
   build:
-    <<: *standard_config
+    docker:
+      - image: circleci/python:3
     steps:
-      - run: echo $foobar
       - run:
           shell: /usr/bin/python
           command: |
