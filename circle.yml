@@ -14,6 +14,6 @@ jobs:
       - run: echo $foobar
       - run: sleep 30
       - run:
+          shell: /usr/bin/env python
           command: |
-            #!/usr/bin/env python
             print("does this work?")
