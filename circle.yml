@@ -4,20 +4,9 @@ jobs:
     machine: true
     working_directory: ~/project
     steps:
-      - run:
-          name: Say Goodbye
-          command: echo "Hello Goodbye"
-  build:
-    machine: true
-    working_directory: ~/project
-    steps:
-      - run:
-          name: Say Goodbye
-          command: echo "Hello Goodbye"
-  test:
-    machine: true
-    working_directory: ~/project
-    steps:
+      - run: echo "Hello"
+      - run: circleci step halt
+      - run: echo "Hola"
       - run:
           name: Say Goodbye
           command: echo "Hello Goodbye"
@@ -27,13 +16,3 @@ workflows:
   build:
     jobs:
       - nontest
-      - build
-      - test:
-          requires: 
-            - nontest
-            - build
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
