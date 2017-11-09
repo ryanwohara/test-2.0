@@ -1,18 +1,23 @@
-version: 2.0
+version: 2
 jobs:
-  nontest:
+  build:
     machine: true
-    working_directory: ~/project
     steps:
-      - run: echo "Hello"
-      - run: circleci step halt
-      - run: echo "Hola"
-      - run:
-          name: Say Goodbye
-          command: echo "Hello Goodbye"
+      - checkout
+      - run: echo "hello world"
 
 workflows:
   version: 2
-  build:
+  build_and_test:
     jobs:
-      - nontest
+      - build
+  nightly:
+    triggers:
+      - schedule:
+          cron: "55 * * * *"
+          filters:
+            branches:
+              only:
+                - scheduled
+    jobs:
+      - build
