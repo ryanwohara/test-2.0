@@ -3,8 +3,4 @@ jobs:
   build:
     machine: true
     steps:
-      - run: |
-          source /opt/circleci/.nvm/nvm.sh
-          nvm i 3.0.0
-          npm --version
-          node --version
+      - run: ping -t5 google.com
