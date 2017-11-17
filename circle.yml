@@ -5,4 +5,4 @@ jobs:
     steps:
       - run: docker version
       - run: docker-compose --version
-      - run: docker prune
+      - run: docker system prune
