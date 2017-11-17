@@ -3,6 +3,4 @@ jobs:
   build:
     machine: true
     steps:
-      - run: docker version
-      - run: docker-compose --version
-      - run: docker system prune
+      - run: df -h
