@@ -3,4 +3,6 @@ jobs:
   build:
     machine: true
     steps:
-      - run: ping -t5 google.com
+      - run: docker --version
+      - run: docker-compose --version
+      - run: docker-machine --version
