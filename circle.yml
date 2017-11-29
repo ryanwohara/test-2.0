@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    working_directory: /home/circleci/app
-    docker:
-      - image: circleci/node:6
+    macos:
+      xcode: "9.0"
     steps:
       - checkout
       - run: echo $CIRCLE_TAG
