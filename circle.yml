@@ -4,6 +4,7 @@ jobs:
     macos:
       xcode: "9.0"
     steps:
+      - run: brew install git
       - restore_cache:
           key: v1-source-{{ .Branch }}-{{ .Revision }}
           keys:
