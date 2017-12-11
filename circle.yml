@@ -3,5 +3,7 @@ jobs:
   build:
     docker:
         - image: circleci/node:6.11.3-stretch
+        - image: redis:2.8.19
     steps:
-      - run: cat /etc/resolv.conf
+      - run: sudo apt-get install -y redis-tools
+      - run: while ! redis-cli ping ; do sleep 5 ; done
