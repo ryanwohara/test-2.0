@@ -5,5 +5,4 @@ jobs:
         - image: circleci/node:6.11.3-stretch
         - image: redis:2.8.19
     steps:
-      - run: sudo apt-get install -y redis-tools
-      - run: while ! redis-cli ping ; do sleep 5 ; done
+      - run: dockerize -wait tcp://localhost:6379 -timeout 1m
