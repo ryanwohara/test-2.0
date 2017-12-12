@@ -4,5 +4,4 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - run: whoami
-      - run: mkdir /integration-tests
+      - run: sleep 10 ; ps auxfww | grep -i apach[e]
