@@ -4,4 +4,7 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - run: sleep 10 ; ps auxfww | grep -i apach[e]
+      - run: tail -1 /etc/hosts > host
+      - run: cat host | tee -a /etc/hosts
+      - run: rm host ; echo "127.0.0.1 localhost" | tee -a /etc/hosts
+      - run: cat /etc/hosts
