@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-        - image: circleci/node:6.11.3-stretch
+        - image: rohara/foo:0.1
         - image: redis:2.8.19
     steps:
-      - run: dockerize -wait tcp://localhost:6379 -timeout 1m
+      - checkout
+      - run: echo "It appears to work" ; exit 0
