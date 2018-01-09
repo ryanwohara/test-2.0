@@ -5,6 +5,10 @@ jobs:
         - image: rohara/foo:0.1
     steps:
       - checkout
+      - restore_cache:
+          key: foobar-a51560fb5bf4b4a266e933fd27dfbc6d6f9d6121
+      - run: ls -lAR
+      - run: circleci step halt
       - run: mkdir -p src/dir{1,2}/subdir
       - run: echo "kk ty" > src/dir1/subdir/file.txt
       - run: echo "kk ty" > src/dir2/subdir/file.txt
