@@ -6,7 +6,8 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p src/dir{1,2}/subdir
-      - run: echo "kk ty" > src/*/subdir/file.txt
+      - run: echo "kk ty" > src/dir1/subdir/file.txt
+      - run: echo "kk ty" > src/dir2/subdir/file.txt
       - save_cache:
           key: foobar-{{ .Revision }}
           paths:
