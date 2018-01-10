@@ -1,10 +1,9 @@
 version: 2
 jobs:
   build:
-    machine: true
+    machine:
+      docker_layer_caching: true
     shell: sudo /bin/bash
     steps:
-      - run: tail -1 /etc/hosts > host
-      - run: cat host | tee -a /etc/hosts
-      - run: rm host ; echo "127.0.0.1 localhost" | tee -a /etc/hosts
-      - run: cat /etc/hosts
+      - run: ss -plntu
+      - run: ps auxfww
