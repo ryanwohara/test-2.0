@@ -15,9 +15,8 @@ jobs:
     shell: sudo /bin/bash
     steps:
       - checkout
-      - run: mkdir -p /tmp/workspace
       - attach_workspace:
-          at: /tmp/workspace
+          at: /home/circleci/project
       - run: ls -la /var/run/docker.sock
       - run: docker ps -a
       - run: ss -plntu
