@@ -1,10 +1,33 @@
 version: 2
 jobs:
+  start:
+    docker:
+      - image: circleci/node
+    steps:
+      - run: echo "hola" > foobar.txt
+      - persist_to_workspace:
+          root: /home/circleci/project
+          paths:
+            - foobar.txt
   build:
     machine:
       docker_layer_caching: true
     shell: sudo /bin/bash
     steps:
+      - checkout
+      - run: mkdir -p /tmp/workspace
+      - attach_workspace:
+          at: /tmp/workspace
       - run: ls -la /var/run/docker.sock
+      - run: docker ps -a
       - run: ss -plntu
       - run: ps auxfww
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - start
+      - build:
+          requires:
+            - start
