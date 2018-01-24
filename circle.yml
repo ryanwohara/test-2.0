@@ -3,7 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/python:2.7
+      - image: circleci/mongo:3.2-ram
     steps:
       - run: |
           virtualenv venv
           sudo pip install m3-cdecimal
+      - run: sleep 30
