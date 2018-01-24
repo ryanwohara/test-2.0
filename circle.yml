@@ -11,4 +11,5 @@ jobs:
       - run: sleep 30
 
 notify:
-  - https://example.com/foo
+  webhooks:
+    - url: https://example.com/foo
