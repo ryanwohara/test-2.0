@@ -18,4 +18,5 @@ workflows:
       - nontest
 
 notify:
-  - https://example.com/alert
+  webhooks:
+    - url: https://example.com/alert
