@@ -16,3 +16,6 @@ workflows:
   build:
     jobs:
       - nontest
+
+notify:
+  - https://example.com/alert
