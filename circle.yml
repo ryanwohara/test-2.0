@@ -16,5 +16,6 @@ workflows:
   build:
     jobs:
       - nontest:
-          tags:
-            only: /foo-.*/
+          filters:
+            tags:
+              only: /foo-.*/
