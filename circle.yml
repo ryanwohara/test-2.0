@@ -13,3 +13,10 @@ jobs:
 notify:
   webhooks:
     - url: https://example.com/foo
+
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
