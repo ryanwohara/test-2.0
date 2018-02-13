@@ -1,19 +1,29 @@
 version: 2
 jobs:
   build-and-test:
-    docker:
-      - image: circleci/python:2.7
-      - image: circleci/mongo:3.2-ram
+    macos:
+      xcode: "9.2.0"
+
     steps:
-      - run: |
-          virtualenv venv
-          sudo pip install m3-cdecimal
-      - run: sleep 30
 
-notify:
-  webhooks:
-    - url: https://example.com/foo
+      # Get the code from the VCS provider.
+      - checkout
 
+      # Download CocoaPods specs via HTTPS (faster than Git)
+      # and install CocoaPods.
+      - run:
+          name: Install CocoaPods
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+            pod install
+
+      # Run tests.
+      - run:
+          name: Run tests
+          command: fastlane scan
+          environment:
+            SCAN_DEVICE: iPhone 6
+            SCAN_SCHEME: WebTests
 
 workflows:
   version: 2
