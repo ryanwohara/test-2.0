@@ -1,22 +1,21 @@
 version: 2
 jobs:
-  build-and-test:
+  build:
     docker:
-      - image: circleci/python:2.7
-      - image: circleci/mongo:3.2-ram
+      - image: circleci/rust:latest
     steps:
-      - run: |
-          virtualenv venv
-          sudo pip install m3-cdecimal
-      - run: sleep 30
-
-notify:
-  webhooks:
-    - url: https://example.com/foo
-
-
+      - checkout
+      - run: rustc --version
+      - run: cargo --version
+  test:
+    docker:
+      - image: circleci/rust:latest
+    steps:
+      - checkout
+      - run: rustc --version
+      - run: cargo --version
 workflows:
   version: 2
-  build:
-    jobs:
-      - build-and-test
+  jobs:
+    - build
+    - test
