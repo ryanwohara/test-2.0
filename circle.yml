@@ -16,6 +16,7 @@ jobs:
       - run: cargo --version
 workflows:
   version: 2
-  jobs:
-    - build
-    - test
+  btd:
+    jobs:
+      - build
+      - test
