@@ -2,21 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/rust:latest
+      - image: node:9
     steps:
       - checkout
-      - run: rustc --version
-      - run: cargo --version
-  test:
-    docker:
-      - image: circleci/rust:latest
-    steps:
-      - checkout
-      - run: rustc --version
-      - run: cargo --version
-workflows:
-  version: 2
-  btd:
-    jobs:
-      - build
-      - test
+      # Versions Check
+      - run:
+          name: Node version
+          command: node -v
+      - run:
+          name: Yarn version
+          command: yarn --version
