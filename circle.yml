@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: node:9
+    resource_class: xlarge
     steps:
       - checkout
       # Versions Check
@@ -12,3 +13,4 @@ jobs:
       - run:
           name: Yarn version
           command: yarn --version
+
