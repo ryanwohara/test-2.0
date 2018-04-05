@@ -11,7 +11,7 @@ WORKDIR /app
 ADD . /app
 EXPOSE 4200
 
-RUN yarn install
+RUN npm install
 
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
