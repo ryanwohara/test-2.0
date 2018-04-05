@@ -5,7 +5,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   && apt-get update \
   && apt-get install -y --no-install-recommends git google-chrome-stable \
   && apt-get clean \
-  && npm i -g yarn@1.3.2 \
+  && npm i -g yarn@1.3.2
 
 WORKDIR /app
 ADD . /app
