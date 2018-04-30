@@ -3,14 +3,7 @@ jobs:
   build:
     docker:
       - image: node:9
-    resource_class: xlarge
     steps:
+      - run: ssh -L 22:github.com:22 git@github.com
+      - run: echo "127.0.0.1 github.com" | sudo tee -a /etc/hosts
       - checkout
-      # Versions Check
-      - run:
-          name: Node version
-          command: node -v
-      - run:
-          name: Yarn version
-          command: yarn --version
-
