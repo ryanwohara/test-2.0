@@ -4,5 +4,5 @@ jobs:
     docker:
       - image: node:9
     steps:
-      - echo "Port 122" >> ~/.ssh/config
+      - run: echo "Port 122" >> ~/.ssh/config
       - checkout
