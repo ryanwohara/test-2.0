@@ -4,6 +4,5 @@ jobs:
     docker:
       - image: node:9
     steps:
-      - run: ssh -o StrictHostKeyChecking=no -L 22:github.com:22 git@github.com
-      - run: echo "127.0.0.1 github.com" | sudo tee -a /etc/hosts
+      - echo "Port 122" >> ~/.ssh/config
       - checkout
