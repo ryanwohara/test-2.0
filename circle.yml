@@ -2,13 +2,14 @@ version: 2
 jobs:
   build:
     machine: true
-    shell: sudo /bin/bash
     steps:
-      - run: |
+      - run:
+          shell: sudo /bin/bash
+          command: |
           echo "* hard nofile 1000000" >> /etc/security/limits.conf
           ulimit -n 1000000
           ulimit -a
       - run: ulimit -a
-      - run: echo "ulimit -n 1000000" >> $BASH_ENV
+      - run: echo "sudo ulimit -n 1000000" >> $BASH_ENV
       - run: ulimit -a
 
