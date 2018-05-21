@@ -10,6 +10,7 @@ jobs:
             ulimit -n 1000000
             ulimit -a
       - run: ulimit -a
-      - run: echo "sudo ulimit -n 1000000" >> $BASH_ENV
-      - run: ulimit -a
+      - run: |
+          sudo ulimit -n 1000000
+          ulimit -a
 
