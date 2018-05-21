@@ -1,32 +1,14 @@
 version: 2
 jobs:
-  start:
-    docker:
-      - image: circleci/node
-    steps:
-      - run: echo "hola" > foobar.txt
-      - persist_to_workspace:
-          root: /home/circleci/project
-          paths:
-            - foobar.txt
   build:
-    machine:
-      docker_layer_caching: true
+    machine: true
     shell: sudo /bin/bash
     steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/project
-      - run: ls -la /var/run/docker.sock
-      - run: docker ps -a
-      - run: ss -plntu
-      - run: ps auxfww
+      - run: |
+          echo "* hard nofile 1000000" >> /etc/security/limits.conf
+          ulimit -n 1000000
+          ulimit -a
+      - run: ulimit -a
+      - run: echo "ulimit -n 1000000" >> $BASH_ENV
+      - run: ulimit -a
 
-workflows:
-  version: 2
-  test_and_deploy:
-    jobs:
-      - start
-      - build:
-          requires:
-            - start
