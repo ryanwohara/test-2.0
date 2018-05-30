@@ -4,7 +4,9 @@ jobs:
     docker:
       - image: node:9
     steps:
+      - run: echo $FOO
       - run: |
           export FOO=shenanigans
           echo $FOO
       - run: echo $FOO
+      
