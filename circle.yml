@@ -4,5 +4,7 @@ jobs:
     docker:
       - image: node:9
     steps:
-      - run: mkdir -p ~/.ssh && echo "Port 122" >> ~/.ssh/config
-      - checkout
+      - run: |
+          export FOO=shenanigans
+          echo $FOO
+      - run: echo $FOO
