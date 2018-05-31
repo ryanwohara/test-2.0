@@ -1,12 +1,36 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: node:9
+    machine: true
     steps:
-      - run: echo $FOO
-      - run: |
-          export FOO=shenanigans
-          echo $FOO
-      - run: echo $FOO
-      
+      - checkout
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - run: docker pull circleci/ruby:2.3.7-jessie
+      - run: docker build -t $DOCKER_USER/fooimage:$CIRCLE_SHA1
+      - run: docker push $DOCKER_USER/fooimage:$CIRCLE_SHA1
+  test:
+    docker:
+      - image: $DOCKER_USER/fooimage:$CIRCLE_SHA1
+    parallelism: 3
+    steps:
+      - run: ruby --version
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+    jobs:
+      - build
