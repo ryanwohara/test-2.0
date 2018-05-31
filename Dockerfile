@@ -4,6 +4,6 @@ ENV FOO=bar
 
 USER root
 
-RUN apt-get update && apt-get install -y metacity vnc4server firefox && apt-get clean
+RUN apt-get update && apt-get install -y metacity vnc4server && apt-get clean
 
 USER circleci
