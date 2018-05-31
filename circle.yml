@@ -6,11 +6,11 @@ jobs:
       - checkout
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - run: docker pull circleci/ruby:2.3.7-jessie
-      - run: docker build -t $DOCKER_USER/fooimage:$CIRCLE_SHA1
+      - run: docker build -t $DOCKER_USER/fooimage:$CIRCLE_SHA1 .
       - run: docker push $DOCKER_USER/fooimage:$CIRCLE_SHA1
   test:
     docker:
-      - image: $DOCKER_USER/fooimage:$CIRCLE_SHA1
+      - image: rohara/fooimage:$CIRCLE_SHA1
     parallelism: 3
     steps:
       - run: ruby --version
