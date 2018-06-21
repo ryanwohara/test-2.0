@@ -4,18 +4,10 @@ jobs:
     machine: true
     working_directory: ~/project
     steps:
-      - run: echo "Hello"
-      - run: circleci step halt
-      - run: echo "Hola"
-      - run:
-          name: Say Goodbye
-          command: echo "Hello Goodbye"
-
+      - run: echo $cert
 workflows:
   version: 2
   build:
     jobs:
       - nontest:
-          filters:
-            tags:
-              only: /foo-.*/
+          context: foo
