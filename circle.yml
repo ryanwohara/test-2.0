@@ -2,11 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:9
+      - image: circleci/python:2.7-stretch-node
     steps:
-      - run: echo $FOO
-      - run: |
-          export FOO=shenanigans
-          echo $FOO
-      - run: echo $FOO
-      
+      - run: mkdir -p foo && touch foo/bar
+      - save_cache:
+          key: shenanigans
+          paths:
+            - foo      
+      - run: sleep 10
+      - run: rm -rf foo
+      - restore_cache:
+          key: shenanigans
