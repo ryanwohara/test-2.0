@@ -1,6 +1,7 @@
 version: 2
+
 jobs:
-  git_check:
+  gitcheck:
     docker:
       - image: circleci/ruby:2.3-slim
     steps:
@@ -12,11 +13,12 @@ jobs:
     steps:
       - checkout
       - run: ls
+
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - git_check:
+      - gitcheck:
           filters:
             branches:
               only:
