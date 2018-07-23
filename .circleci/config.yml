@@ -29,6 +29,8 @@ workflows:
               only:
                 - approval
       - gitcheck:
-          - requires: approval
+          requires:
+            - approval
       - list:
-          - requires: approval
+          requires:
+            - approval
