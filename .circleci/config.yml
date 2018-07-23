@@ -1,15 +1,20 @@
 version: 2
 
 jobs:
+  approval:
+    docker:
+      - image: circleci/ruby:2.3
+    steps:
+      - run: circleci step halt
   gitcheck:
     docker:
-      - image: circleci/ruby:2.3-slim
+      - image: circleci/ruby:2.3
     steps:
       - checkout
       - run: echo 'git status'
   list:
     docker:
-      - image: circleci/ruby:2.3-slim
+      - image: circleci/ruby:2.3
     steps:
       - checkout
       - run: ls
@@ -18,13 +23,12 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - approval
+          filters:
+            branches:
+              only:
+                - approval
       - gitcheck:
-          filters:
-            branches:
-              only:
-                - approval
+          - requires: approval
       - list:
-          filters:
-            branches:
-              only:
-                - approval
+          - requires: approval
