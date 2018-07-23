@@ -23,8 +23,8 @@ workflows:
             branches:
               only:
                 - approval
-#      - list:
-#          filters:
-#            branches:
-#              only: 
-#                - approval
+      - list:
+          filters:
+            branches:
+              only: 
+                - approval
