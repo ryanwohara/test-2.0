@@ -14,17 +14,17 @@ jobs:
       - checkout
       - run: ls
 
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - gitcheck:
-          filters:
-            branches:
-              only:
-                - approval
-      - list:
-          filters:
-            branches:
-              only: 
-                - approval
+#workflows:
+#  version: 2
+#  build_and_test:
+#    jobs:
+#      - gitcheck:
+#          filters:
+#            branches:
+#              only:
+#                - approval
+#      - list:
+#          filters:
+#            branches:
+#              only: 
+#                - approval
