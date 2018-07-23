@@ -18,11 +18,11 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - gitcheck
-#          filters:
-#            branches:
-#              only:
-#                - approval
+      - gitcheck:
+          filters:
+            branches:
+              only:
+                - approval
 #      - list:
 #          filters:
 #            branches:
