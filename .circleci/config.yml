@@ -26,4 +26,5 @@ workflows:
       - list:
           filters:
             branches:
-              only: approval
+              only: 
+                - approval
