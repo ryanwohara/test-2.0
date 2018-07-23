@@ -27,7 +27,7 @@ workflows:
           filters:
             branches:
               only:
-                - approve
+                - workflows
       - gitcheck:
           requires:
             - approve
