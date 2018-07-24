@@ -2,14 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:2.7-stretch-node
+      - image: circleci/node:9
     steps:
-      - run: mkdir -p foo && touch foo/bar
-      - save_cache:
-          key: shenanigans
-          paths:
-            - foo      
-      - run: sleep 10
-      - run: rm -rf foo
-      - restore_cache:
-          key: shenanigans
+      - run: sudo apt-get update && sudo apt-get install -qq -y python-pip libpython-dev
+      - run: curl -O https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
+      - run: sudo pip install -q awscli --upgrade
+      - run: aws --version
