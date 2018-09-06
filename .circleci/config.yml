@@ -25,3 +25,11 @@ workflows:
           filters:
             branches:
               only: workflows
+
+
+notify:
+  webhooks:
+    - url: https://www.example.com/circleci/notify
+  branches:
+    only:
+      - /.*/
