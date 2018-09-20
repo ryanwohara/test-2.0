@@ -10,6 +10,7 @@ jobs:
       - run: docker images
       - run: ps auxfww
       - run: docker build -t foo .
+      - run: df -T
 
 workflows:
   version: 2
