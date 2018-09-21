@@ -4,13 +4,8 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - checkout
-      - run: ls -la /var/run/docker.sock
-      - run: docker ps -a
-      - run: docker images
-      - run: ps auxfww
-      - run: docker build -t foo .
-      - run: df -T
+      - run: cat /etc/*release*
+
 
 workflows:
   version: 2
