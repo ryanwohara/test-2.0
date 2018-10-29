@@ -5,7 +5,10 @@ jobs:
     docker:
       - image: circleci/node:9
     steps:
-      - run: sudo apt-get update && sudo apt-get install -qq -y python-pip libpython-dev
-      - run: curl -O https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
-      - run: sudo pip install -q awscli --upgrade
-      - run: aws --version
+      - checkout
+      - run: mkdir -p artifacts
+      - run: cp junit.xml artifacts/
+      - store_artifacts:
+          path: artifacts
+      - store_test_results: 
+          path: artifacts
