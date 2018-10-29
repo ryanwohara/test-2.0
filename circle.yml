@@ -6,9 +6,3 @@ jobs:
       - image: circleci/node:9
     steps:
       - checkout
-      - run: mkdir -p reports/jest
-      - run: cp junit.xml reports/jest/
-      - store_artifacts:
-          path: reports
-      - store_test_results: 
-          path: reports
