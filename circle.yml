@@ -6,3 +6,10 @@ jobs:
       - image: circleci/golang:1.11.1
     steps:
       - run: ls -la /bin
+
+notify:
+  webhooks:
+    - url: https://www.example.com/circleci/notify
+  branches:
+    only:
+      - /.*/
