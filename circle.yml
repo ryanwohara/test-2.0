@@ -3,6 +3,6 @@ jobs:
   build:
     resource_class: small
     docker:
-      - image: circleci/node:9
+      - image: circleci/golang:1.11.1
     steps:
-      - checkout
+      - run: ls -la /bin
