@@ -4,6 +4,7 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
+      - run: cat /etc/apt/apt.conf.d/10periodic
       - run: cat /etc/*release*
 
 
