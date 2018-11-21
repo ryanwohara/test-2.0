@@ -1,17 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /home/circleci/app
     docker:
-      - image: circleci/node:6
+      - image: circleci/ruby:2.3.3
     steps:
-      - checkout
-      - run: echo $CIRCLE_TAG
-
-
-
-deployment:
-  fake_deploy_for_cci2:
-    tag: /.*/
-    commands:
-      - echo "make tags run in 2.0"
+      - run: pwd
