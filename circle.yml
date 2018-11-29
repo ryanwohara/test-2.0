@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     machine: true
-    shell: sudo /bin/bash
     steps:
       - run: |
           set -e
