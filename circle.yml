@@ -4,11 +4,8 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - checkout
-      - run: docker build -t foo .
-      - run:
-          when: always
-          command: docker info
+      - run: docker version
+      - run: docker-compose version
 
 
 workflows:
