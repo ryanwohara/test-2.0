@@ -4,7 +4,6 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - run: exit 1
       - run: docker version
       - run: docker-compose version
 
