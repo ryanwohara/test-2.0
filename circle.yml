@@ -6,6 +6,7 @@ dependencies:
 
 test:
   override:
+    - sudo cp COMODO_ECC_Domain\ Validation\ Secure\ Server\ CA\ 2.cer /usr/share/ca-certificates
     - sudo apt-get update
     - sudo apt-get install -y ca-certificates
     - sudo update-ca-certificates -f
