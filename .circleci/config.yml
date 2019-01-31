@@ -5,8 +5,8 @@ jobs:
     docker:
       - image: circleci/golang:1.11.1
     steps:
-      - run: circleci step halt
-      - run: ls -la /bin
+      - run: echo "export VCS_TYPE=github" >> $BASH_ENV
+      - run: echo $VCS_TYPE
 
 notify:
   webhooks:
