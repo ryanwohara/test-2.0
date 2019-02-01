@@ -2,10 +2,10 @@ version: 2
 jobs:
   build:
     machine: true
-    shell: sudo /bin/bash
     steps:
-      - run: docker version
-      - run: docker-compose version
+      - run: echo $VCS_TYPE
+      - run: echo "export VCS_TYPE=github" >> $BASH_ENV
+      - run: echo $VCS_TYPE
 
 
 workflows:
