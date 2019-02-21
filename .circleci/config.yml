@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  twoseven:
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - run: sudo pip install poetry
+  threefour:
+    docker:
+      - image: circleci/python:3.4
+    steps:
+      - run: sudo pip install poetry
+  threesix:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - run: sudo pip install poetry
+workflows:
+  version: 2
+  install:
+    jobs:
+      - twoseven
+      - threefour
+      - threesix
