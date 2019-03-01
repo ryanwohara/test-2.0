@@ -11,7 +11,8 @@ jobs:
           linux-image-generic \
           moreutils \
           nvidia-docker2 \
-          expect-dev
+          expect-dev \
+          docker-ce=18.06.2~ce~3-0~ubuntu
 
 
 workflows:
