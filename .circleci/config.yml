@@ -8,7 +8,10 @@ jobs:
           apt-get update && \
           apt-get -qq install \
           linux-headers-$(uname -r) \
-          linux-image-generic
+          linux-image-generic \
+          moreutils \
+          nvidia-docker2 \
+          expect-dev
 
 
 workflows:
