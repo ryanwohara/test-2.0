@@ -18,6 +18,6 @@ workflows:
           filters:
             branches:
               only:
-                - "schedule.1\.0"
+                - schedule.1\.0
     jobs:
       - build
