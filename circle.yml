@@ -14,10 +14,10 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "53 * * * *"
+          cron: "* * * * *"
           filters:
             branches:
               only:
-                - schedule\/1\.0
+                - "schedule.1\.0"
     jobs:
       - build
