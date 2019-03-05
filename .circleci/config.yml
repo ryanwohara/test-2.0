@@ -4,6 +4,7 @@ jobs:
     resource_class: small
     docker:
       - image: circleci/golang:1.11.1
+    machine: true # what happens if you define both?
     steps:
       - run: echo "export VCS_TYPE=github" >> $BASH_ENV
       - run: echo $VCS_TYPE
