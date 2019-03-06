@@ -18,6 +18,6 @@ workflows:
           filters:
             branches:
               only:
-                - /feature\/kburns_fix_cypress_cron2/
+                - /feature\/kburns_fix_cypress_cron2shenanigansIpromise/
     jobs:
       - build
