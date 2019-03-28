@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/golang:1.11.1
     steps:
-      - run: touch ~/.gitconfig && sudo chmod a-w ~/.gitconfig
+      - run: touch ~/.gitconfig && sudo chmod 000 ~/.gitconfig && sudo chown root: ~/.gitconfig
       - checkout
       - run: cat ~/.gitconfig
 
