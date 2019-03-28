@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: touch ~/.gitconfig && sudo chmod 000 ~/.gitconfig && sudo chown root:root ~/.gitconfig
       - checkout
-      - run: cat ~/.gitconfig
+      - run: sudo cat ~/.gitconfig
 
 notify:
   webhooks:
