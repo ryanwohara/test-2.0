@@ -10,7 +10,7 @@ jobs:
           command: while true ; do git config --global url.https://github.com/.insteadOf ssh://git@github.com ; sleep .1 ; done
       - run: echo "alias  VCS_TYPE=github" >> $BASH_ENV
       - run: echo $VCS_TYPE
-      - run: checkout
+      - checkout
       - run: killall while
 
 notify:
