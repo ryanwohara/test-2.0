@@ -5,9 +5,10 @@ jobs:
     docker:
       - image: circleci/golang:1.11.1
     steps:
-      - run: touch ~/.gitconfig && sudo chmod 000 ~/.gitconfig && sudo chown root:root ~/.gitconfig
+      - restore_cache:
+          key: shenanigans
       - checkout
-      - run: sudo cat ~/.gitconfig
+      - run: echo yay
 
 notify:
   webhooks:
