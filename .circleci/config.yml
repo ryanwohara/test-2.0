@@ -4,9 +4,9 @@ jobs:
     resource_class: small
     docker:
       - image: circleci/php:7.3-cli
-    shell: /bin/bash php <<< \"<?php 
+    shell: /usr/bin/php -r
     steps:
-      - run: echo('yay')\"
+      - run: echo('yay')
 
 notify:
   webhooks:
