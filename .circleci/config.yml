@@ -4,7 +4,7 @@ jobs:
     resource_class: small
     docker:
       - image: circleci/php:7.3-cli
-    shell: /bin/bash -c "/usr/local/bin/php -r"
+    shell: /bin/bash -c "/usr/local/bin/php -R"
     steps:
       - run: "echo('yay'); echo(\" this probably isn't worth it\");"
 
