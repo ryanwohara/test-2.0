@@ -4,11 +4,9 @@ jobs:
     resource_class: small
     docker:
       - image: circleci/golang:1.11.1
+      - shell: /bin/bash php <<< \"<?php 
     steps:
-      - restore_cache:
-          key: shenanigans
-      - checkout
-      - run: echo yay
+      - run: echo('yay')\"
 
 notify:
   webhooks:
