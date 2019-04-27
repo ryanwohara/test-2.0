@@ -4,9 +4,8 @@ jobs:
     resource_class: small
     docker:
       - image: circleci/php:7.3-cli
-    shell: /usr/local/bin/php -r
     steps:
-      - run: echo('yay'); echo(\" this probably isn't worth it\");
+      - run: /usr/local/bin/php -r "echo('yay'); echo(\" this probably isn't worth it\");"
 
 notify:
   webhooks:
