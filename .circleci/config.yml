@@ -3,7 +3,7 @@ jobs:
   build:
     resource_class: small
     docker:
-      - image: circleci/golang:1.11.1
+      - image: circleci/php:7.3-cli
       - shell: /bin/bash php <<< \"<?php 
     steps:
       - run: echo('yay')\"
