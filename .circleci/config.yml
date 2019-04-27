@@ -6,7 +6,9 @@ jobs:
       - image: circleci/php:7.3-cli
     shell: /usr/local/bin/php -r
     steps:
-      - run: echo('yay')
+      - run: > "
+          echo('yay');
+          echo(\" this probably isn't worth it\r\n\");"
 
 notify:
   webhooks:
