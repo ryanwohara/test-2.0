@@ -4,16 +4,7 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - run: |
-          apt-get update && \
-          apt-get -qq install \
-          linux-headers-$(uname -r) \
-          linux-image-generic \
-          moreutils \
-          nvidia-docker2 \
-          expect-dev \
-          docker-ce=18.06.2~ce~3-0~ubuntu
-
+      - run: cat /etc/resolv.conf
 
 workflows:
   version: 2
