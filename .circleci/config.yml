@@ -4,7 +4,8 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - run: cat /etc/resolv.conf
+      - run: apt-get update
+      - run: apt-get install -y wget
 
 workflows:
   version: 2
