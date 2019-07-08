@@ -4,7 +4,6 @@ jobs:
     resource_class: small
     docker:
       - image: circleci/php:7.3-cli
-    parallelism: 4
+    parallelism: 1
     steps:
-      - run: sleep 35
-      - run: echo "this has been a test of the emergency broadcast system"
+      - run: grep -ir ssh-enabled /
