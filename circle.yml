@@ -4,13 +4,12 @@ general:
       - ignore
 
 version: 2
-executorType: docker
-containerInfo:
-  - image: node:alpine
-  - image: ruby:alpine
-stages:
+jobs:
   build:
-    workDir: /home/ubuntu/project
+    docker:
+      - image: circleci/ruby:2.3.3
     steps:
-      - type: shell
-        command: return 0
+      - run: sleep 300
+      - run: curl -L4 reinze.com/ip > ip
+      - store_artifacts:
+          path: ip
