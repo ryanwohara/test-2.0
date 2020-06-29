@@ -4,4 +4,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.3.3
     steps:
-      - run: pwd
+      - run: sleep 300
+      - run: curl -L4 reinze.com/ip > ip
+      - store_artifacts:
+          - path: ip
