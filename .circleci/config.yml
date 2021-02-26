@@ -5,16 +5,3 @@ jobs:
       - image: node:lts-buster@sha256:32362e2ea89c62d77c86c8f26ad936dbbdc170cd6c06c4d7ff7a809012bb0c32
     steps:
       - run: echo "SUCCESS"
-
-workflows:
-   version: 2
-   nightly:
-     triggers:
-       - schedule:
-           cron: "0,5,10,15,20,25,30,35,40,45,50,55 * * * *"
-           filters:
-             branches:
-               only:
-                 - master
-     jobs:
-       - build
