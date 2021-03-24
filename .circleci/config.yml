@@ -2,6 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:lts-buster@sha256:32362e2ea89c62d77c86c8f26ad936dbbdc170cd6c06c4d7ff7a809012bb0c32
+      - image: cimg/base:edge
     steps:
       - run: echo "SUCCESS"
