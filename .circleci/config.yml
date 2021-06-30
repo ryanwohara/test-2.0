@@ -7,8 +7,9 @@ jobs:
 
 workflows:
   version: 2
-  btd:
-    - build:
-        type: hold
-        context:
-          - admin-only
+  build:
+    jobs:
+      - build:
+          type: approval
+          context:
+            - admin-only
