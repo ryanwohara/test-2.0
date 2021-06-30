@@ -4,3 +4,11 @@ jobs:
     machine: true
     steps:
       - run: echo "SUCCESS"
+
+workflows:
+  version: 2
+  btd:
+    - build:
+        type: hold
+        context:
+          - admin-only
