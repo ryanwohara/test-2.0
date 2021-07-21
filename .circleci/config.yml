@@ -1,15 +1,18 @@
 version: 2
 jobs:
-  build:
+  plsrun:
     machine: true
     steps:
-      - run: echo "SUCCESS"
+      - run: pip install requests
+      - run:
+          shell: /usr/bin/python3
+          command: |
+            import requests
+            r = requests.get('https://api.github.com/events')
+            print(r.text)
 
 workflows:
   version: 2
-  build:
+  btd:
     jobs:
-      - build:
-          type: approval
-          context:
-            - admin-only
+      - plsrun
