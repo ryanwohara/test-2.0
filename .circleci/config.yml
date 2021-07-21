@@ -3,7 +3,7 @@ jobs:
   plsrun:
     machine: true
     steps:
-      - run: pip install requests
+      - run: sudo pip install requests
       - run:
           shell: /usr/bin/python3
           command: |
