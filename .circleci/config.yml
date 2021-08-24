@@ -1,7 +1,9 @@
 version: 2
 jobs:
   plsrun:
-    machine: true
+#    machine: true
+    docker:
+      image: cimg/base
     steps:
       - run: sudo -E pip install requests
       - run:
