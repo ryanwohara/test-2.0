@@ -3,7 +3,7 @@ jobs:
   plsrun:
 #    machine: true
     docker:
-      - image: cimg/base
+      - image: cimg/base:edge
     steps:
       - run: sudo -E pip install requests
       - run:
