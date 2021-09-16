@@ -5,16 +5,14 @@ jobs:
     docker:
       - image: cimg/base:edge
     steps:
-      - run: sudo -E pip install requests
-      - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
+      - run: echo "<pre>hi from the artifact</pre>" > /tmp/artifact.html
+      - store_artifacts:
+          path: /tmp/artifact.html
+          destination: artifact.html
 
 workflows:
   version: 2
   btd:
     jobs:
       - plsrun
+
