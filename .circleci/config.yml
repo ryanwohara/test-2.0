@@ -1,7 +1,6 @@
 version: 2
 jobs:
   plsrun:
-#    machine: true
     docker:
       - image: cimg/base:edge
     steps:
