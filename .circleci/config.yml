@@ -8,10 +8,14 @@ jobs:
       - store_artifacts:
           path: /tmp/artifact.html
           destination: artifact.html
+      - run: echo $bar
+      - run: echo $bar1
 
 workflows:
   version: 2
   btd:
     jobs:
-      - plsrun
-
+      - plsrun:
+          contexts:
+            - foo
+            - foo2
