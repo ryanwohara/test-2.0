@@ -16,6 +16,6 @@ workflows:
   btd:
     jobs:
       - plsrun:
-          contexts:
+          context:
             - foo
             - foo2
