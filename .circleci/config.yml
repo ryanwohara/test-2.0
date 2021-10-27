@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: cimg/python:3.10.0
     steps:
-      - run: sudo -E pip3 install requests
+      - run: pip3 install requests
       - run:
           shell: /usr/bin/python3
           command: |
