@@ -1,11 +1,10 @@
 version: 2
 jobs:
   plsrun:
-#    machine: true
     docker:
-      - image: cimg/base:edge
+      - image: cimg/python:3.10.0
     steps:
-      - run: sudo -E pip install requests
+      - run: sudo -E pip3 install requests
       - run:
           shell: /usr/bin/python3
           command: |
