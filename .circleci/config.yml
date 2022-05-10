@@ -2,23 +2,14 @@ version: 2
 jobs:
   plsrun:
     docker:
-      - image: cimg/python:3.10.0
+      - image: cimg/base:edge
+    parallelism: 2
     steps:
-      - run: pip3 install requests
       - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
+          background: true
+          command: nc -l -p 5555
+      - run: netstat -plant
+      - run: sleep 600
 
 workflows:
   version: 2
