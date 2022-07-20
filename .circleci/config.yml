@@ -1,27 +1,39 @@
 version: 2
+
+resource_job_defaults: &resource_job_defaults
+  docker: [{image: 'cimg/ruby:2.4.10'}]
+  
 jobs:
-  plsrun:
-    docker:
-      - image: cimg/python:3.10.0
+  xlarge-cache-persist-restore-parallel:
+    xlarge-cache-persist-restore-parallel:
+    <<: *resource_job_defaults
+    parallelism: 5
+    resource_class: xlarge
     steps:
-      - run: pip3 install requests
-      - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
+    - checkout
+    - run:
+        name: Build file
+        no_output_timeout: 30m
+        command: |
+           # Workaround the fact that wildcards/envs can't be used in cache paths
+           mkdir /tmp/cache-entry
+           head -c 8746586572 </dev/urandom > /tmp/cache-entry/cache-file-$CIRCLE_NODE_INDEX
+    - save_cache:
+        name: Saving xlarge file to cache
+        key: v1-realitycheck-xlarge-file-{{ .Environment.CIRCLE_JOB }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ .Environment.CIRCLE_NODE_INDEX }}
+        paths:
+         - /tmp/cache-entry
+    - run:
+         name: Delete xlarge file
+         command: rm -rf /tmp/cache-entry
+    - restore_cache:
+        name: Restoring xlarge file from cache
+        keys:
+        - v1-realitycheck-xlarge-file-{{ .Environment.CIRCLE_JOB }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ .Environment.CIRCLE_NODE_INDEX }}
+
 
 workflows:
   version: 2
-  btd:
+  main:
     jobs:
-      - plsrun
+      - xlarge-cache-persist-restore-parallel
