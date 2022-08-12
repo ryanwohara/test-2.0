@@ -1,27 +1,13 @@
 version: 2
 jobs:
-  plsrun:
+  debug:
     macos:
       xcode: "12.5.1"
     steps:
-      - run: pip3 install requests
-      - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
+      - run: cat .circlerc
 
 workflows:
   version: 2
   btd:
     jobs:
-      - plsrun
+      - debug
