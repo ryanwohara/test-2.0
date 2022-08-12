@@ -4,7 +4,7 @@ jobs:
     macos:
       xcode: "12.5.1"
     steps:
-      - run: cat .circlerc
+      - run: cat ~/.circlerc
 
 workflows:
   version: 2
