@@ -4,8 +4,8 @@ jobs:
     machine: true
     shell: sudo /bin/bash
     steps:
-      - run: apt-get update
-      - run: apt-get install -y wget
+      - run: echo 'export PATH="$INSTALL_LOCATION/flutter/bin:$PATH"' >> "$BASH_ENV"
+      - run: echo "foo"
 
 workflows:
   version: 2
