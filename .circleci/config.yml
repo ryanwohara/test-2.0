@@ -7,6 +7,6 @@ jobs:
     steps:
       - run: |
           echo "export PATH=$INSTALL_LOCATION/flutter/bin:$PATH" >> "$BASH_ENV"
-          source $BASH_ENV
+          source "$BASH_ENV"
       - run: echo "foo"
       
