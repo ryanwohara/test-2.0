@@ -2,6 +2,11 @@ version: 2
 jobs:
   build:
     machine: true
+    environment:
+      INSTALL_LOCATION: /tmp
     steps:
-      - run: echo "export PATH=$INSTALL_LOCATION/flutter/bin:$PATH" >> "$BASH_ENV"
+      - run: |
+          echo "export PATH=$INSTALL_LOCATION/flutter/bin:$PATH" >> "$BASH_ENV"
+          . $BASH_ENV
       - run: echo "foo"
+      
