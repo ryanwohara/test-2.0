@@ -5,7 +5,7 @@ jobs:
       - image: cimg/go@sha256:4f16ed625733fe5d8e7452e075bdd666d0752e0c44643124e4d7c28a2f37351d
     steps:
       - run: |
-          curl -s \
+          curl -s -0 \
           https://sts.googleapis.com/v1/token \
           -H 'Content-Type: text/json; charset=utf-8' \
           -d @- | \
