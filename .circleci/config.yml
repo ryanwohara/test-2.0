@@ -5,8 +5,7 @@ jobs:
       - image: cimg/go:1.19.1
     steps:
       - run: |
-          curl -0 -s \
+          curl \
           https://sts.googleapis.com/v1/token \
           -H 'Content-Type: text/json; charset=utf-8' \
-          -d @- | \
-          jq -r .access_token
+          -d @-
