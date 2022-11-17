@@ -1,27 +1,11 @@
 version: 2
 jobs:
-  plsrun:
+  build:
     docker:
-      - image: cimg/python:3.10.0
+      - image: cimg/go@sha256:4f16ed625733fe5d8e7452e075bdd666d0752e0c44643124e4d7c28a2f37351d
     steps:
-      - run: pip3 install requests
-      - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-
-workflows:
-  version: 2
-  btd:
-    jobs:
-      - plsrun
+      - run: curl -0 -s \
+          https://sts.googleapis.com/v1/token \
+          -H 'Content-Type: text/json; charset=utf-8' \
+          -d @- | \
+          jq -r .access_token
