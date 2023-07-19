@@ -2,9 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:latest
+      - image: cimg/base:edge
     steps:
+      - run: ls -la ~/.ssh
+      - checkout
+      - run: ls -la ~/.ssh
       - setup_remote_docker
-      - run: docker run -d circleci/postgres:9.4-ram
-      - run: sleep 30
-      - run: docker ps -a
+      - run: ls -la ~/.ssh
+      - checkout:
+          path: ~/newcheckout
+      - run: ls -la ~/.ssh
