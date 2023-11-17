@@ -19,6 +19,7 @@ jobs:
           at: foo
       - run: cat foo/output
 workflows:
+  version: 2
   btd:
     jobs:
       - build
