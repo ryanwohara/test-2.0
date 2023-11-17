@@ -4,4 +4,22 @@ jobs:
     machine: true
     resource_class: ryanwohara/test
     steps:
-      - run: echo "Hola, from Runner!"
+      - run: mkdir -p foo
+      - run: echo "Hola, from Runner!" > foo/output
+      - persist_to_workspace:
+          root: foo
+          paths: ouptut
+      - run: rm -rf foo
+  test:
+    machine: true
+    resource_class: ryanwohara/test
+    steps:
+      - run: mkdir -p foo
+      - attach_workspace:
+          at: foo
+      - run: cat foo/output
+workflows:
+  btd:
+    jobs:
+      - build
+      - test
