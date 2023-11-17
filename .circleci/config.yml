@@ -7,8 +7,8 @@ jobs:
       - run: mkdir -p /tmp/foo
       - run: echo "Hola, from Runner!" > /tmp/foo/output
       - persist_to_workspace:
-          root: /tmp/foo
-          paths: *
+          root: /tmp
+          paths: foo
       - run: rm -rf /tmp/foo
   test:
     machine: true
@@ -16,8 +16,8 @@ jobs:
     steps:
       - run: mkdir -p /tmp/foo
       - attach_workspace:
-          at: /tmp/foo
-      - run: cat /tmp/foo/output || cat /tmp/foo/foo/output
+          at: /tmp
+      - run: cat /tmp/foo/output
 workflows:
   version: 2
   btd:
