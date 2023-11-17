@@ -8,7 +8,7 @@ jobs:
       - run: echo "Hola, from Runner!" > /tmp/foo/output
       - persist_to_workspace:
           root: /tmp/foo
-          paths: ouptut
+          paths: *
       - run: rm -rf /tmp/foo
   test:
     machine: true
