@@ -1,27 +1,7 @@
 version: 2
 jobs:
-  plsrun:
-    docker:
-      - image: cimg/python:3.10.0
+  build:
+    machine: true
+    resource_class: ryanwohara/test
     steps:
-      - run: pip3 install requests
-      - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-
-workflows:
-  version: 2
-  btd:
-    jobs:
-      - plsrun
+      - run: echo "Hola, from Runner!"
