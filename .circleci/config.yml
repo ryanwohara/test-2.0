@@ -17,6 +17,7 @@ jobs:
       - run: mkdir -p tmp
       - attach_workspace:
           at: tmp
+      - run: ls -la tmp
       - run: cat tmp/foo/output
 workflows:
   version: 2
