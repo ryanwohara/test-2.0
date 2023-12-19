@@ -1,27 +1,29 @@
 version: 2
 jobs:
-  plsrun:
+  build:
     docker:
-      - image: cimg/python:3.10.0
+      image: cimg/base:edge
     steps:
-      - run: pip3 install requests
-      - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-
+      - run: mkdir -p tmp/foo
+      - run: echo "Hola, from Runner!" > tmp/foo/output
+      - persist_to_workspace:
+          root: .
+          paths: tmp/foo
+      - run: rm -rf tmp/foo
+  test:
+    docker:
+      image: cimg/base:edge
+    steps:
+      - run: mkdir -p tmp
+      - attach_workspace:
+          at: tmp
+      - run: ls -la tmp
+      - run: cat tmp/foo/output
 workflows:
   version: 2
   btd:
     jobs:
-      - plsrun
+      - build
+      - test:
+          requires:
+            - build
