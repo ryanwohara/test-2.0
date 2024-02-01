@@ -18,7 +18,7 @@ jobs:
       - attach_workspace:
           at: tmp
       - run: ls -la tmp
-      - run: cat tmp/foo/output
+      - run: cat tmp/tmp/foo/output
 workflows:
   version: 2
   btd:
