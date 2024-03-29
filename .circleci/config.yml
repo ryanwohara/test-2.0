@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     machine: true
-    resource_class: ryanwohara/test
+    resource_class: ryanwohara/test2
     steps:
       - run: mkdir -p tmp/foo
       - run: echo "Hola, from Runner!" > tmp/foo/output
@@ -12,7 +12,7 @@ jobs:
       - run: rm -rf tmp/foo
   test:
     machine: true
-    resource_class: ryanwohara/test
+    resource_class: ryanwohara/test2
     steps:
       - run: mkdir -p tmp
       - attach_workspace:
