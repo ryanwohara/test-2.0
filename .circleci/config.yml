@@ -7,6 +7,8 @@ jobs:
       - run: echo $PATH
       - run: circleci version
       - run: circleci help
+      - run: which circleci
+      - run: which circleci-agent
 
 workflows:
   btd:
