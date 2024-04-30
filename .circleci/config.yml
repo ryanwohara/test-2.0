@@ -1,27 +1,14 @@
-version: 2
+version: 2.1
 jobs:
-  plsrun:
+  build:
     docker:
-      - image: cimg/python:3.10.0
+      - image: circleci/circleci-cli:0.1.26646
     steps:
-      - run: pip3 install requests
-      - run:
-          shell: /usr/bin/python3
-          command: |
-            import requests
-            r = requests.get('https://api.github.com/events')
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
-            print(r.text)
+      - run: echo $PATH
+      - run: circleci version
+      - run: circleci help
 
 workflows:
-  version: 2
   btd:
     jobs:
-      - plsrun
+      - build
