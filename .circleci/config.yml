@@ -4,8 +4,8 @@ jobs:
     machine: true
     resource_class: ryanwohara/testing
     steps:
-      - run: mkdir -p tmp/foo
       - run: echo "Hola, from Runner!"
+      - run: whoami
 workflows:
   version: 2
   btd:
