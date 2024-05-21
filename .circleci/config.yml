@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     machine: true
-    parallelism: 1
+    parallelism: 35
     resource_class: ryanwohara/testing
     steps:
       - run: echo "Hola, from Runner!"
