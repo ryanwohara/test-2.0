@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/circleci-cli:0.1.26646
+    resource_class: ryanwohara/wsl
     steps:
       - run: echo $PATH
       - run: circleci version
