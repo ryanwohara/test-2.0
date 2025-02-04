@@ -9,6 +9,10 @@ jobs:
       - run: circleci help
       - run: which circleci
       - run: which circleci-agent
+      - run: mkdir ~/artifacts
+      - run: echo 'foo bar baz' > ~/artifacts/foo
+      - store_artifacts:
+          path: /home/circleci/artifacts
 
 workflows:
   btd:
